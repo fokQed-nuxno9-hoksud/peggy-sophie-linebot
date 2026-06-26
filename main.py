@@ -327,11 +327,21 @@ def call_gemini(system_prompt: str, user_message: str) -> str:
         "system_instruction": {"parts": [{"text": system_prompt}]},
         "contents": [{"role": "user", "parts": [{"text": user_message}]}],
     }
-    resp = requests.post(GEMINI_URL, json=payload)
-    data = resp.json()
-    if "candidates" in data:
-        return data["candidates"][0]["content"]["parts"][0]["text"]
-    return "抱歉，AI 暫時無法回應，請稍後再試。"
+    try:
+        resp = requests.post(GEMINI_URL, json=payload, timeout=25)
+        data = resp.json()
+        if "candidates" in data:
+            return data["candidates"][0]["content"]["parts"][0]["text"]
+        error_info = data.get("error", {})
+        print(f"[Gemini Error] status={resp.status_code} error={error_info}")
+        reason = error_info.get("message", "未知錯誤")[:60]
+        return f"抱歉，AI 暫時無法回應（{reason}），請稍後再試。"
+    except requests.exceptions.Timeout:
+        print("[Gemini Error] Request timed out (>25s)")
+        return "抱歉，AI 回應超時，請稍後再試。"
+    except Exception as e:
+        print(f"[Gemini Error] Exception: {e}")
+        return "抱歉，AI 暫時無法回應，請稍後再試。"
 
 
 def handle_tool(ai_reply: str) -> str:
