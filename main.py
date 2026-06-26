@@ -20,6 +20,10 @@ NOTION_TOKEN = os.environ["NOTION_TOKEN"]
 NOTION_TASKS_DB_ID = os.environ["NOTION_TASKS_DB_ID"]
 LINE_USER_ID = os.environ.get("LINE_USER_ID", "")
 
+# Eva — JIDIN_Peggy LINE OA
+EVA_LINE_CHANNEL_SECRET = os.environ.get("EVA_LINE_CHANNEL_SECRET", "")
+EVA_LINE_CHANNEL_ACCESS_TOKEN = os.environ.get("EVA_LINE_CHANNEL_ACCESS_TOKEN", "")
+
 GEMINI_URL = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key={GEMINI_API_KEY}"
 DAILY_SHEET_ID = "14GLya7CgPe9TfEuNx2L30LAznzcFtiGSvU8gHPcOqd4"
 WEEKDAYS = ["一", "二", "三", "四", "五", "六", "日"]
@@ -85,6 +89,32 @@ def detect_agent(message: str) -> str:
 
 AGENT_PROMPTS = {"sophie": SOPHIE_PROMPT, "lisa": LISA_PROMPT, "helen": HELEN_PROMPT}
 AGENT_NAMES = {"sophie": "Sophie", "lisa": "Lisa", "helen": "Helen"}
+
+# ── Eva system prompt ────────────────────────────────────────────
+EVA_PROMPT = """你是 Eva，JIDIEN 碁電機器視覺部門的 AI 客服助理，代表業務工程師 Peggy（王冠懿）在 LINE 官方帳號上回覆客戶詢問。
+
+【公司背景】
+JIDIEN 碁電（www.jidien.com）是台灣機器視覺整合商，提供：
+- 工業相機（Area scan / Line scan / 3D）：Basler、Hikrobot、FLIR 等品牌
+- 鏡頭：Computar、FUJINON、KOWA、Schneider、TAMRON、ZEISS 等
+- 光源 & 光控器：CCS、OPT 等品牌（環形燈、背光、條形燈、同軸燈）
+- IPC 工業電腦、擷取卡
+- 讀碼器（Barcode / QR Code）
+- 影像分析軟體 MOZI
+- 雷射位移感測器、工業傳感器
+
+【回覆規則】
+1. 語言：客戶用繁中 → 繁中回；客戶用英文 → 英文回
+2. 語氣：專業、親切、簡潔
+3. 若能從背景知識判斷答案 → 直接回覆，並在回覆末加上 [CONFIDENCE: HIGH]
+4. 若問題涉及具體報價、交期、庫存、客製規格、或超出你知識範圍 → 草擬回覆但加上 [CONFIDENCE: LOW]
+5. 絕不給出具體價格數字（說「請提供需求，我幫您安排報價」）
+6. 若客戶問「你是 AI 嗎？」→ 誠實回答「我是 JIDIN 的 AI 助理 Eva，有問題我會盡力協助，需要時會轉給業務同仁。」
+7. 保持完全政治中立，不評論任何政治、宗教、種族、社會爭議議題；遇到此類問題回答「這個問題超出我的服務範圍」
+8. 不偽裝成真人
+
+【回覆格式】
+直接給回覆內容（不要加解釋），最後一行必須是 [CONFIDENCE: HIGH] 或 [CONFIDENCE: LOW]。"""
 
 # ── Google Sheet ─────────────────────────────────────────────────
 
@@ -348,6 +378,93 @@ def webhook():
         ai_reply = call_gemini(system_prompt, user_text)
         final_reply = handle_tool(ai_reply)
         reply_line(reply_token, f"[{agent_name}]\n{final_reply}")
+
+    return "OK"
+
+
+# ── Eva LINE helpers ──────────────────────────────────────────────
+
+def eva_reply_line(reply_token: str, text: str):
+    requests.post(
+        "https://api.line.me/v2/bot/message/reply",
+        headers={
+            "Authorization": f"Bearer {EVA_LINE_CHANNEL_ACCESS_TOKEN}",
+            "Content-Type": "application/json",
+        },
+        json={"replyToken": reply_token, "messages": [{"type": "text", "text": text[:5000]}]},
+    )
+
+
+def eva_push_line(user_id: str, text: str):
+    requests.post(
+        "https://api.line.me/v2/bot/message/push",
+        headers={
+            "Authorization": f"Bearer {EVA_LINE_CHANNEL_ACCESS_TOKEN}",
+            "Content-Type": "application/json",
+        },
+        json={"to": user_id, "messages": [{"type": "text", "text": text[:5000]}]},
+    )
+
+
+def notify_peggy_for_review(customer_id: str, customer_msg: str, draft: str):
+    """推播給 Peggy 審核草稿，請她到 LINE OA 後台回覆客戶。"""
+    notice = (
+        f"【Eva 草稿確認】\n"
+        f"客戶 ID：{customer_id}\n"
+        f"客戶訊息：{customer_msg}\n\n"
+        f"草稿回覆：\n{draft}\n\n"
+        f"請至 LINE 官方帳號後台確認後回覆客戶。"
+    )
+    push_line(LINE_USER_ID, notice)
+
+
+def verify_eva_signature(body: bytes, signature: str) -> bool:
+    hash_value = hmac.new(
+        EVA_LINE_CHANNEL_SECRET.encode("utf-8"), body, hashlib.sha256
+    ).digest()
+    expected = base64.b64encode(hash_value).decode("utf-8")
+    return hmac.compare_digest(expected, signature)
+
+
+# ── Eva webhook ───────────────────────────────────────────────────
+
+@app.route("/eva/webhook", methods=["POST"])
+def eva_webhook():
+    if not EVA_LINE_CHANNEL_SECRET or not EVA_LINE_CHANNEL_ACCESS_TOKEN:
+        return "Eva not configured", 503
+
+    signature = request.headers.get("X-Line-Signature", "")
+    body = request.get_data()
+
+    if not verify_eva_signature(body, signature):
+        abort(400)
+
+    events = request.json.get("events", [])
+    for event in events:
+        if event.get("type") != "message":
+            continue
+        if event["message"].get("type") != "text":
+            continue
+
+        user_text = event["message"]["text"].strip()
+        reply_token = event["replyToken"]
+        customer_id = event.get("source", {}).get("userId", "unknown")
+
+        # 讓 Gemini 生成草稿並附上信心值
+        ai_reply = call_gemini(EVA_PROMPT, user_text)
+
+        # 解析 confidence
+        confidence = "LOW"
+        if "[CONFIDENCE: HIGH]" in ai_reply:
+            confidence = "HIGH"
+        clean_reply = ai_reply.replace("[CONFIDENCE: HIGH]", "").replace("[CONFIDENCE: LOW]", "").strip()
+
+        if confidence == "HIGH":
+            eva_reply_line(reply_token, clean_reply)
+        else:
+            # 草稿模式：先回覆客戶「稍候」，再通知 Peggy
+            eva_reply_line(reply_token, "感謝您的詢問！我們收到您的問題，業務同仁將盡快為您確認並回覆。")
+            notify_peggy_for_review(customer_id, user_text, clean_reply)
 
     return "OK"
 
