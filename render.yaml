@@ -9,11 +9,13 @@ services:
         sync: false
       - key: LINE_CHANNEL_ACCESS_TOKEN
         sync: false
-      - key: GEMINI_API_KEY
+      - key: ANTHROPIC_API_KEY
         sync: false
       - key: NOTION_TOKEN
         sync: false
       - key: NOTION_TASKS_DB_ID
+        sync: false
+      - key: LINE_USER_ID
         sync: false
       - key: EVA_LINE_CHANNEL_SECRET
         sync: false
