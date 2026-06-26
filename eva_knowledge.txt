@@ -1,0 +1,332 @@
+# JIDIN_Peggy 產品知識庫（Eva 專用，不含報價）
+# 更新日期：2026-06-26
+
+## 工業相機
+
+### Basler（代理商，主力品牌）
+產品線：ace Series（GigE / USB3 / CXP）
+  - acA640-120gm：659x494 , 120fps , 5.6umx5.6um
+  - acA640-120gc：659x494 , 120fps , 5.6umx5.6um (LAST BUY:30-Nov-21)
+  - acA640-121gm：659x494 , 130fps , 5.6umx5.6um
+  - acA640-90gm：659x494 , 90fps , 7.4umx7.4um (LAST BUY:31-Mar-22)
+  - acA640-90gc：659x494 , 90fps , 7.4umx7.4um
+  - acA640-300gm：640x480, 376fps, mono
+  - acA640-300gc：640x480, 376fps, color
+  - acA645-100gm：659x494 , 100fps ,
+  - acA645-100gc：659x494 , 100fps ,
+  - acA720-290gm：720x540 , 293fps ,
+  （更多型號請洽 Peggy 確認）
+
+### Basler boost / dart / racer 系列
+  - ral2048-48gm：Optional
+  - ral2048-80km：Optional
+  - ral4096-24gm：Optional
+  - ral4096-80km：Optional
+  - boost series - CoaXPress 2.0：
+  - boA4500-45cm：108389.0
+  - boA4500-45cc：108390.0
+  - boA6500-36cm：108391.0
+
+### Sony 工業相機
+  - Sony Camera：品名
+  - XC-ST30：
+  - XC-ST50：
+  - XC-ST50CE：
+  - XC-ST51：
+  - XC-ST51CE：
+  - XC-ST70：
+  - XC-HR50：
+
+### 大華（Dahua）工業相機
+  - A3B00MG000E：
+  - A5B57MK200E：
+  - A7500CG20E：
+  - AE3B00CG010：透過登順問的
+  - AX5E07CT250E：
+  - AX7Q10MX470：(CXP介面)
+  - L5047CG140E：
+  - L5042CG141E：
+
+### NET Camera（網路攝影機 / AI 相機）
+  - GimaGO -Gigabit Ethernet - CCD B/W Camera：
+  - P. O. No.：
+  - GO124B：
+  - GO134B：
+  - GO323B：
+  - GO423B：
+
+### 其他代理相機品牌
+  ALSON, ARTRAY, Aval Global, Bitflow, CEI, ILUMINA, Imperx, Intercon1, IOI, ISVI, LAK, MOZI, Panasonic, PhotonFocus, RSEE, RDV, Veritec, 台達, Sentech, FAST, Nevis, EPIX, 丞基, 金品, 深視, 匯萃, 登順, 惠寶, Illunis, 蘇映視(new)
+
+## 光源 & 光控器
+
+### OPT（主力品牌）
+  類型：AOI 專用光源, 光源控制器, 同軸光源, 條形光源, 環形光源, 線掃光源, 背光光源
+  光色：紅、綠、藍、白、紅外、UV
+
+### CCS（日本品牌，高端光源）
+  類型：環形、背光、條形、同軸、Dome 等
+
+## 鏡頭
+
+### CCS
+  - Telecentric Lens：LED
+  - "Telecentric Lens+LED Light" Set Price to Jidien：
+  - SE-110ST08：LDR2-32BL2-JD
+  - SE-110ST10：LDR2-32GR2-JD
+  - SE-110ST15：LDR2-32RD2-JD
+  - SE-110ST20：LDR2-32SW2-JD
+
+### CCS
+  - SE-110ST08：1
+  - SE-110ST10：1
+  - SE-110ST15：1
+  - SE-110ST20：1
+  - SE-110ST40：1
+  - SE-65ST08：1
+
+### Computar希比希
+  - TEC-M0565MPC：0.5X 同軸
+  - TEC-M0565MP：0.5X
+  - TEC-M0865MPC：0.8X 同軸
+  - TEC-M0865MP：0.8X
+  - TEC-M1065MPC：1.0X 同軸
+  - TEC-M1065MP：1.0X
+
+### FUJINON
+  - TF8DA-8B：
+  - HF6XA-5M：特價
+  - HF6XA-5M：
+  - HF8XA-5M：特價
+  - HF8XA-5M：
+  - HF12XA-5M：特價
+
+### Kragonfly
+  - KF-TLH1-180C：
+  - KF43-3528：
+  - KF-AFMS460 (GP-460H)：200萬畫素 (包含GP-460H*1+1.4X  0.5X*2)
+  - KF-AFMS420(GP-420H)：500萬畫素 (包含GP-420H*1+ 0.5X*1)
+  - KF-AFMS410(GP-410H)：1200萬畫素 (包含GP-410H*1+ 0.5X*1)
+  - GP-460H-C：單獨相機
+
+### KOWA
+  - LM8JC10M：2/3" 8.5mm F1.8~22,10MP鏡頭
+
+### Myutron
+  - FV0420：1/2 f4mm F2.0 1MP
+  - FV0622：1/2 f6mm F2.2 1MP
+  - FV1022：1/2 f10mm F2.2 1MP
+  - FV1520：2/3 f15mm F2.0 1MP
+  - FV2020：2/3 f20mm F2.0 1MP
+  - FV2520：2/3 f25mm F2.0 1MP
+
+### NIKON
+  - OVM05042MN  F mount：
+  - OVM05042MN-M95E：
+
+### OPT
+  - JID-CDP2528：高解析工業鏡頭 焦距25mm ; 17.6mm靶面(1.1") ; 分辨率208lp/mm ; 鍍膜
+  - JID-CDP3528：高解析工業鏡頭 焦距35mm ; 17.6mm靶面(1.1") ; 分辨率208lp/mm ; 鍍膜
+  - OPT-COB0828：Cobra系列定焦鏡頭 8mm/F2.8
+  - OPTTW-MH05-110C：MH系列遠心鏡頭，倍率0.5X 距離110mm
+  - OPT-MH05-65：0.5X 2/3"遠心鏡頭WD65
+  - OPTTW-C1216-5M：5百萬畫素12mm鏡頭
+
+### OPTART
+  - MK8M-5MP：2023/9/11通知停產
+  - MK12M-5MP：2023/9/11通知停產
+  - MK16M-5MP：2023/9/11通知停產
+  - MK25M-5MP：2023/9/11通知停產
+  - MK35M-5MP：5 megapixel f35mm 1:1.4 FA CCTV lens, high resolut
+  - VMK1214-C：
+
+### OPTO
+  - 360LIB-02：Software library & stand-alone tools for the optim
+  - CBETH003：Ethernet cable, CAT6, industrial level,high flexib
+  - CBGPIO001：I/O cable, side 1 HIROSE 12 pin, side 2 cable end,
+  - CBUSB3001：Passive USB 3.0 cable, industrial level, horizonta
+  - CMHO016：Clamping mechanics for TCxx016 lenses and LTCLHP01
+  - CMHO024：Clamping mechanics for TCxx024 lenses and LTCLHP02
+
+### OPTOTUNE
+  - Part No.：Part Description
+  - Bracket kit LSR-4：Mounting screws included
+  - CAB-14-20：Electrical lens connection cable
+14 pin cable to c
+  - CAB-14-50：Electrical lens connection cable
+14 pin cable to c
+  - CAB-6-100：Electrical lens connection cable
+6-pin Hirose male
+  - CAB-6-1000：Electrical lens connection cable
+6-pin Hirose male
+
+### RICOH
+  - Machine Vision Lens "5MX"：
+  - FL-CC0820-5MX：8mm F2.0 with Lock-Screws (Additional Thumb-Screws
+  - FL-CC1218-5MX：12mm F1.8 with Lock-Screws (Additional Thumb-Screw
+  - FL-CC1618-5MX：16mm F1.8 with Lock-Screws (Additional Thumb-Screw
+  - FL-CC2518-5MX：25mm F1.8 with Lock-Screws (Additional Thumb-Screw
+  - FL-CC3524-5MX：35mm F2.4 with Lock-Screws (Additional Thumb-Screw
+
+### Schneider組合
+  - NO.2：
+  - 1097276：1
+  - 20176A：1
+  - 902004A：1
+  - 1054733A：1
+
+### Schneider
+  - Lens：
+  - Xenon-Jade 1.2'' - image circle 19.3mm - optimized for sensors with micro-lenses -broadband coated：
+  - JADE：2.8 / 12 C
+  - JADE：2.8 / 16 C
+  - JADE：2.8 / 25 C
+  - JADE：2.8 / 35 C
+
+### SPACE
+  - Pyxis 8：JHF8M-5MP
+  - Pyxis 12：JHF12M-5MP
+  - Pyxis 16：JHF16M-5MP
+  - Pyxis 25：JHF25M-5MP
+  - Pyxis 25：JHF25M-5MP
+  - Pyxis 25：JHF25M-5MP
+
+### TAMRON
+  - M118FM06：1
+  - M118FM08：1
+  - M118FM12：1
+  - M118FM16：1
+  - M118FM25：1
+  - M118FM50：1
+
+### TOKINA
+  - KCM-05D：
+  - KCM-28P：
+  - KCM-28P：漲價
+  - KCM-Z2：
+  - KCM-Z4.5D：
+  - KCM-05S-65SR：
+
+### TPC
+  - TCJ-W05110：0.5X一眼兩視野,交期4~6週
+  - TCJ-W05110：0.5X一眼兩視野,交期4~6週
+  - TCP2-40：1/2型
+  - TJCP-HMS-W：MIRROR 1個月
+  - TJCP-HMS-W：MIRROR 2.5個月
+  - TJCP-HMS-W：MIRROR 3個月
+
+### TUSS
+  - EX-20K：
+  - KV0614SS：
+  - KV0814M2：
+  - KV0814M2：
+  - KV0814M2：FOR ASE
+  - KV1214M2：
+
+### TUSS美金
+  - EX-20K：
+  - KV0614SS：
+  - KV0814M2：
+  - KV0814M2：
+  - KV0814M2：FOR ASE
+  - KV1214M2：
+
+### VS for業務
+  - Page：型號
+
+### ZEISS
+  - ZEISS Dimension：
+  - Dimension 2.8/8 C：C-Mount
+  - Dimension 2/12 C：C-Mount
+  - Dimension 2/18 C：C-Mount
+  - Dimension 2/25 C：C-Mount
+  - Dimension 2/35 C：C-Mount
+
+### Wavelength Opto
+  - TSL-9.4-50-75Z-D14：
+
+### ZEISS(NT)
+  - ZEISS Dimension：
+  - Dimension 2.8/8 C：C-Mount
+  - Dimension 2/12 C：C-Mount
+  - Dimension 2/18 C：C-Mount
+  - Dimension 2/25 C：C-Mount
+  - Dimension 2/35 C：C-Mount
+
+### 山善
+  - 378-810-3：20X Mitutoyo Plan Apo SL InfinityCorrected Objecti
+  - 378-787-4：5X Mitutoyo Plan APO HR InfinityCorrected Objectiv
+  - 378-803-3：10X Mitutoyo Plan APO InfinityCorrected Long WD Ob
+  - 378-834-7：Mitutoyo BD Plan Apo 20X
+  - 378-848-3：Mitutoyo G Plan APO 50X
+  - 378-805-3：Mitutoyo M Plan Apo 50x
+
+### 浩藍
+  - AZURE-0307XTHM：
+  - AZURE-0412ZM：
+  - AZURE-0814MM：
+  - AZURE-0918M3M：
+  - AZURE-1040Z3M：
+  - AZURE-1060ZM：
+
+### 普密斯
+  - PMS-1ST200-C：
+  - PMS-DTC23100-A：
+  - PMS-DTC23100-C：
+  - PMS-LZME-0510M：
+  - PMS-MC1-80：
+  - PMS-MC03-185：
+
+### 視清
+  - Mega Object Telecentric Lens: WWH Series：
+  - WWH65A：
+  - WWH03-65ATV3：
+  - WWH05-65AT：
+  - WWH08-65AT：Φ26x89.7
+  - WWH10-65AT：Φ26x79.9
+
+### schneider LENS Selection
+  - Detail：貼上型號
+  - 16K 當 12K：
+
+### 登順(Schneider配件)他牌鏡頭
+  - 1001041A：802019A
+  - 1011634A：902021A
+  - 1018385A：903032A
+  - 1054532A：802020A
+  - 1054733A：904035A
+  - 1062892A：904029A
+
+### 德鴻(積吉)
+  - WTL110-20X20：
+  - 1-10M0820：
+  - DH110-05F40：
+  - DH110-08F34：
+  - DH110-03F50-S5：
+  - DH110-03FH：
+
+### 桂林方天
+  - FB20-180T：2X遠心鏡頭 WD=180
+
+### 其他國內鏡頭廠商
+  - MML1-ST40D：1X同軸鏡頭(WD.40mm)
+  - MV5095C：1" 50mm/F0.95鏡頭
+  - MV2595C：25mm/F0.96鏡頭
+  - RY-HR-2X-110D：2X內同軸鏡頭(WD:110mm)
+  - MI-0816-5M：2/3" 8mm F1.6 5百萬畫素鏡頭
+  - MML08-HR110D：0.8X高解析同軸鏡頭(WD:110mm)
+
+## 其他產品 & 軟體
+
+- **讀碼器**：Dataman（Cognex）、RDV 等品牌
+- **影像擷取卡**：Bitflow、EPIX、Intercon1
+- **AI 視覺軟體**：Neurocle（深度學習）、mViz
+- **電源供應器**：台達電（台達 Power supply）
+- **光纖傳輸**：LAK
+
+## Eva 回覆原則
+
+- 客戶問「有沒有 X 品牌/型號」→ 根據以上清單判斷，有就確認，沒有就說超出目前代理範圍
+- 客戶問具體報價、折扣、交期、庫存 → [CONFIDENCE: LOW]，轉 Peggy 確認
+- 客戶問應用場景建議（如 AOI、PCB 檢測、食品篩選等）→ 根據產品知識建議，[CONFIDENCE: HIGH]
+- 客戶問技術規格（解析度、fps、sensor size 等）→ 如有明確資料就答，不確定就 LOW

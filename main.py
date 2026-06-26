@@ -113,8 +113,23 @@ JIDIEN 碁電（www.jidien.com）是台灣機器視覺整合商，提供：
 7. 保持完全政治中立，不評論任何政治、宗教、種族、社會爭議議題；遇到此類問題回答「這個問題超出我的服務範圍」
 8. 不偽裝成真人
 
+【產品知識庫】
+{knowledge}
+
 【回覆格式】
 直接給回覆內容（不要加解釋），最後一行必須是 [CONFIDENCE: HIGH] 或 [CONFIDENCE: LOW]。"""
+
+# ── Eva 知識庫 ────────────────────────────────────────────────────
+def _load_eva_knowledge() -> str:
+    kb_path = os.path.join(os.path.dirname(__file__), "eva_knowledge.txt")
+    try:
+        with open(kb_path, encoding="utf-8") as f:
+            return f.read()
+    except Exception:
+        return "（知識庫暫時無法載入，請根據公司背景知識回答）"
+
+EVA_KNOWLEDGE = _load_eva_knowledge()
+EVA_PROMPT_FULL = EVA_PROMPT.replace("{knowledge}", EVA_KNOWLEDGE)
 
 # ── Google Sheet ─────────────────────────────────────────────────
 
@@ -451,7 +466,7 @@ def eva_webhook():
         customer_id = event.get("source", {}).get("userId", "unknown")
 
         # 讓 Gemini 生成草稿並附上信心值
-        ai_reply = call_gemini(EVA_PROMPT, user_text)
+        ai_reply = call_gemini(EVA_PROMPT_FULL, user_text)
 
         # 解析 confidence
         confidence = "LOW"
