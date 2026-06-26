@@ -5,6 +5,8 @@ import base64
 import json
 import re
 import requests
+from datetime import datetime
+from zoneinfo import ZoneInfo
 from flask import Flask, request, abort
 
 app = Flask(__name__)
@@ -17,6 +19,8 @@ NOTION_TASKS_DB_ID = os.environ["NOTION_TASKS_DB_ID"]
 LINE_USER_ID = os.environ.get("LINE_USER_ID", "")
 
 GEMINI_URL = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key={GEMINI_API_KEY}"
+DAILY_SHEET_ID = "14GLya7CgPe9TfEuNx2L30LAznzcFtiGSvU8gHPcOqd4"
+WEEKDAYS = ["一", "二", "三", "四", "五", "六", "日"]
 
 # ── System prompts ──────────────────────────────────────────────
 
@@ -24,17 +28,16 @@ SOPHIE_PROMPT = """你是 Sophie，Peggy 的工作 AI 助理。
 Peggy 在台灣 JIDIEN（碁電）機器視覺部門擔任業務工程師，負責對接客戶、挑選相機/鏡頭/光源、打報價單、追蹤案件。
 
 你的任務：
+- 根據工作日誌試算表整理今日待辦與近期提醒
 - 協助起草中英文客戶信件
 - 協助整理報價單與技術規格
 - 提供工作建議與案件追蹤支援
-- 回答機器視覺相關的產品問題
 
 規則：
 - 一律用繁體中文，語氣自然像朋友
 - 中文與英文/數字間加半形空格（例：有 3 台相機）
 - 專業術語保留英文（Camera, Lens, FOV, GigE 等）
-
-若使用者說「To do list」，主動詢問今天有哪些工作要處理，並幫她整理優先順序。"""
+- 日期格式：M/D（週幾），例如 6/26（五）"""
 
 LISA_PROMPT = """你是 Lisa，Peggy 的財經助理，專注美股與台股。
 
@@ -76,19 +79,23 @@ def detect_agent(message: str) -> str:
         return "lisa"
     elif "helen" in msg or "today's plan" in msg or "today plan" in msg:
         return "helen"
-    return "sophie"  # default
+    return "sophie"
 
-AGENT_PROMPTS = {
-    "sophie": SOPHIE_PROMPT,
-    "lisa": LISA_PROMPT,
-    "helen": HELEN_PROMPT,
-}
+AGENT_PROMPTS = {"sophie": SOPHIE_PROMPT, "lisa": LISA_PROMPT, "helen": HELEN_PROMPT}
+AGENT_NAMES = {"sophie": "Sophie", "lisa": "Lisa", "helen": "Helen"}
 
-AGENT_NAMES = {
-    "sophie": "Sophie",
-    "lisa": "Lisa",
-    "helen": "Helen",
-}
+# ── Google Sheet ─────────────────────────────────────────────────
+
+def get_daily_sheet() -> str:
+    url = f"https://docs.google.com/spreadsheets/d/{DAILY_SHEET_ID}/export?format=csv&gid=0"
+    try:
+        resp = requests.get(url, timeout=15, allow_redirects=True)
+        ct = resp.headers.get("Content-Type", "")
+        if resp.status_code == 200 and ("csv" in ct or not resp.text.strip().startswith("<")):
+            return resp.text[:4000]
+        return "（試算表尚未設為公開，無法讀取。請設定「知道連結的人可以檢視」。）"
+    except Exception as e:
+        return f"（讀取失敗：{e}）"
 
 # ── Notion tools ─────────────────────────────────────────────────
 
@@ -177,7 +184,7 @@ def push_line(user_id: str, text: str):
         json={"to": user_id, "messages": [{"type": "text", "text": text[:5000]}]},
     )
 
-# ── Gemini + tool execution ───────────────────────────────────────
+# ── Gemini ────────────────────────────────────────────────────────
 
 def call_gemini(system_prompt: str, user_message: str) -> str:
     payload = {
@@ -234,28 +241,56 @@ def webhook():
         reply_token = event["replyToken"]
         user_id = event.get("source", {}).get("userId", "")
 
-        # 特殊指令：查詢自己的 LINE User ID
+        # 查詢自己的 LINE User ID
         if user_text.lower() in ["我的line id", "my line id", "line id"]:
-            reply_line(reply_token, f"你的 LINE User ID 是：\n{user_id}\n\n請把這個 ID 加到 Render 的環境變數 LINE_USER_ID，Lisa 的財經日報就能推 LINE 給你了。")
+            reply_line(reply_token, f"你的 LINE User ID 是：\n{user_id}")
             continue
 
         agent = detect_agent(user_text)
+
+        # Sophie + To do list → 讀 Google Sheet
+        if agent == "sophie" and "to do list" in user_text.lower():
+            taipei = ZoneInfo("Asia/Taipei")
+            now = datetime.now(taipei)
+            today_str = f"{now.month}/{now.day}（{WEEKDAYS[now.weekday()]}）"
+
+            sheet_csv = get_daily_sheet()
+            prompt_msg = f"""今天是 {today_str}。
+
+以下是 Peggy 的工作日誌試算表（CSV 格式）：
+{sheet_csv}
+
+請根據以上資料整理出：
+
+一、今天 {today_str} 的工作待辦清單（有幾項列幾項，附上備註/細節）
+二、近期重要提醒（未來 2 週內，含日期與週幾）
+
+輸出格式：
+今天要做的事
+
+1. 事項 — 說明
+2. 事項 — 說明
+
+近期重要提醒
+- M/D（週幾）— 事項
+
+最後一行：簡短詢問是否需要幫她起草 mail 或整理資料。"""
+            ai_reply = call_gemini(SOPHIE_PROMPT, prompt_msg)
+            reply_line(reply_token, f"[Sophie]\n{ai_reply}")
+            continue
+
+        # 一般 AI 回應
         system_prompt = AGENT_PROMPTS[agent]
         agent_name = AGENT_NAMES[agent]
-
         ai_reply = call_gemini(system_prompt, user_text)
         final_reply = handle_tool(ai_reply)
-
-        # 加上 agent 標記
-        tagged_reply = f"[{agent_name}]\n{final_reply}"
-        reply_line(reply_token, tagged_reply)
+        reply_line(reply_token, f"[{agent_name}]\n{final_reply}")
 
     return "OK"
 
 
 @app.route("/push_lisa", methods=["POST"])
 def push_lisa():
-    """供 Lisa 財經日報腳本呼叫，推送訊息到 LINE。"""
     target_id = LINE_USER_ID or request.json.get("user_id", "")
     message = request.json.get("message", "")
     if not target_id or not message:
