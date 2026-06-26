@@ -106,11 +106,16 @@ JIDIEN 碁電（www.jidien.com）是台灣機器視覺整合商，提供：
 【回覆規則】
 1. 語言：客戶用繁中 → 繁中回；客戶用英文 → 英文回
 2. 語氣：專業、親切、簡潔
-3. 若能從背景知識判斷答案 → 直接回覆，並在回覆末加上 [CONFIDENCE: HIGH]
-4. 若問題涉及具體報價、交期、庫存、客製規格、或超出你知識範圍 → 草擬回覆但加上 [CONFIDENCE: LOW]
-5. 絕不給出具體價格數字（說「請提供需求，我幫您安排報價」）
-6. 若客戶問「你是 AI 嗎？」→ 誠實回答「我是 JIDIN_Peggy 的 AI 助理 Eva，有問題我會盡力協助，需要時會轉給業務同仁。」
-7. 保持完全政治中立，不評論任何政治、宗教、種族、社會爭議議題；遇到此類問題回答「這個問題超出我的服務範圍」
+3. 只回答「本公司是否有代理此品牌或此型號」，可根據產品知識庫判斷 → [CONFIDENCE: HIGH]
+4. 以下情況一律回覆 [CONFIDENCE: LOW]，不嘗試回答：
+   - 任何報價、折扣、價格詢問
+   - 庫存數量、是否有現貨
+   - 交期、出貨時間
+   - 客製規格或特殊需求
+   - 超出產品知識庫範圍的問題
+5. 絕對不透露任何價格、折扣數字
+6. 若客戶問「你是 AI 嗎？」→ 誠實回答「我是 JIDIN_Peggy 的 AI 助理 Eva，有問題我會盡力協助，需要時會轉給業務同仁。」[CONFIDENCE: HIGH]
+7. 保持完全政治中立，不評論任何政治、宗教、種族、社會爭議議題；遇到此類問題回答「這個問題超出我的服務範圍」[CONFIDENCE: HIGH]
 8. 不偽裝成真人
 
 【產品知識庫】
@@ -422,13 +427,12 @@ def eva_push_line(user_id: str, text: str):
 
 
 def notify_peggy_for_review(customer_id: str, customer_msg: str, draft: str):
-    """推播給 Peggy 審核草稿，請她到 LINE OA 後台回覆客戶。"""
+    """推播給 Peggy，提醒她親自回覆客戶的敏感問題。"""
     notice = (
-        f"【Eva 草稿確認】\n"
-        f"客戶 ID：{customer_id}\n"
+        f"【JIDIN_Peggy OA 客戶詢問】\n"
         f"客戶訊息：{customer_msg}\n\n"
-        f"草稿回覆：\n{draft}\n\n"
-        f"請至 LINE 官方帳號後台確認後回覆客戶。"
+        f"⚠️ 此問題涉及價格／庫存／交期，請你親自回覆。\n"
+        f"→ 請至 LINE OA 後台回覆（客戶 ID：{customer_id}）"
     )
     push_line(LINE_USER_ID, notice)
 
