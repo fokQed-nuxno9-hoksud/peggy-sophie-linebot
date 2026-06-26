@@ -7,6 +7,7 @@ import base64
 import json
 import re
 import requests
+import anthropic
 from datetime import datetime, date, timedelta
 from zoneinfo import ZoneInfo
 from flask import Flask, request, abort
@@ -15,7 +16,7 @@ app = Flask(__name__)
 
 LINE_CHANNEL_SECRET = os.environ["LINE_CHANNEL_SECRET"]
 LINE_CHANNEL_ACCESS_TOKEN = os.environ["LINE_CHANNEL_ACCESS_TOKEN"]
-GEMINI_API_KEY = os.environ["GEMINI_API_KEY"]
+ANTHROPIC_API_KEY = os.environ["ANTHROPIC_API_KEY"]
 NOTION_TOKEN = os.environ["NOTION_TOKEN"]
 NOTION_TASKS_DB_ID = os.environ["NOTION_TASKS_DB_ID"]
 LINE_USER_ID = os.environ.get("LINE_USER_ID", "")
@@ -24,7 +25,7 @@ LINE_USER_ID = os.environ.get("LINE_USER_ID", "")
 EVA_LINE_CHANNEL_SECRET = os.environ.get("EVA_LINE_CHANNEL_SECRET", "")
 EVA_LINE_CHANNEL_ACCESS_TOKEN = os.environ.get("EVA_LINE_CHANNEL_ACCESS_TOKEN", "")
 
-GEMINI_URL = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key={GEMINI_API_KEY}"
+_claude = anthropic.Anthropic(api_key=ANTHROPIC_API_KEY)
 DAILY_SHEET_ID = "14GLya7CgPe9TfEuNx2L30LAznzcFtiGSvU8gHPcOqd4"
 WEEKDAYS = ["一", "二", "三", "四", "五", "六", "日"]
 
@@ -327,27 +328,25 @@ def push_line(user_id: str, text: str):
         json={"to": user_id, "messages": [{"type": "text", "text": text[:5000]}]},
     )
 
-# ── Gemini ────────────────────────────────────────────────────────
+# ── Claude ────────────────────────────────────────────────────────
 
-def call_gemini(system_prompt: str, user_message: str) -> str:
-    payload = {
-        "system_instruction": {"parts": [{"text": system_prompt}]},
-        "contents": [{"role": "user", "parts": [{"text": user_message}]}],
-    }
+def call_claude(system_prompt: str, user_message: str) -> str:
     try:
-        resp = requests.post(GEMINI_URL, json=payload, timeout=25)
-        data = resp.json()
-        if "candidates" in data:
-            return data["candidates"][0]["content"]["parts"][0]["text"]
-        error_info = data.get("error", {})
-        print(f"[Gemini Error] status={resp.status_code} error={error_info}")
-        reason = error_info.get("message", "未知錯誤")[:60]
-        return f"抱歉，AI 暫時無法回應（{reason}），請稍後再試。"
-    except requests.exceptions.Timeout:
-        print("[Gemini Error] Request timed out (>25s)")
-        return "抱歉，AI 回應超時，請稍後再試。"
+        msg = _claude.messages.create(
+            model="claude-haiku-4-5",
+            max_tokens=1024,
+            system=system_prompt,
+            messages=[{"role": "user", "content": user_message}],
+        )
+        return msg.content[0].text
+    except anthropic.RateLimitError:
+        print("[Claude Error] Rate limit exceeded")
+        return "抱歉，AI 暫時忙碌，請稍後再試。"
+    except anthropic.APIError as e:
+        print(f"[Claude Error] API error: {e}")
+        return "抱歉，AI 暫時無法回應，請稍後再試。"
     except Exception as e:
-        print(f"[Gemini Error] Exception: {e}")
+        print(f"[Claude Error] Exception: {e}")
         return "抱歉，AI 暫時無法回應，請稍後再試。"
 
 
@@ -412,7 +411,7 @@ def webhook():
         # 一般 AI 回應
         system_prompt = AGENT_PROMPTS[agent]
         agent_name = AGENT_NAMES[agent]
-        ai_reply = call_gemini(system_prompt, user_text)
+        ai_reply = call_claude(system_prompt, user_text)
         final_reply = handle_tool(ai_reply)
         reply_line(reply_token, f"[{agent_name}]\n{final_reply}")
 
@@ -487,7 +486,7 @@ def eva_webhook():
         customer_id = event.get("source", {}).get("userId", "unknown")
 
         # 讓 Gemini 生成草稿並附上信心值
-        ai_reply = call_gemini(EVA_PROMPT_FULL, user_text)
+        ai_reply = call_claude(EVA_PROMPT_FULL, user_text)
 
         # 解析 confidence
         confidence = "LOW"
