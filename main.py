@@ -330,7 +330,10 @@ def push_line(user_id: str, text: str):
 
 # ── Claude ────────────────────────────────────────────────────────
 
-def call_claude(system_prompt: str, user_message: str) -> str:
+_RATE_LIMIT_MSG_CUSTOMER = "感謝您的詢問！已收到您的問題，Peggy將盡快為您確認並回覆＾＾"
+_RATE_LIMIT_MSG_INTERNAL = "AI 今日額度暫時達上限，明天恢復後繼續！"
+
+def call_claude(system_prompt: str, user_message: str, customer_facing: bool = False) -> str:
     try:
         msg = _claude.messages.create(
             model="claude-haiku-4-5",
@@ -341,7 +344,7 @@ def call_claude(system_prompt: str, user_message: str) -> str:
         return msg.content[0].text
     except anthropic.RateLimitError:
         print("[Claude Error] Rate limit exceeded")
-        return "抱歉，AI 暫時忙碌，請稍後再試。"
+        return _RATE_LIMIT_MSG_CUSTOMER if customer_facing else _RATE_LIMIT_MSG_INTERNAL
     except anthropic.APIError as e:
         print(f"[Claude Error] API error: {e}")
         return "抱歉，AI 暫時無法回應，請稍後再試。"
@@ -485,8 +488,7 @@ def eva_webhook():
         reply_token = event["replyToken"]
         customer_id = event.get("source", {}).get("userId", "unknown")
 
-        # 讓 Gemini 生成草稿並附上信心值
-        ai_reply = call_claude(EVA_PROMPT_FULL, user_text)
+        ai_reply = call_claude(EVA_PROMPT_FULL, user_text, customer_facing=True)
 
         # 解析 confidence
         confidence = "LOW"
