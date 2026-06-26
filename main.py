@@ -1,3 +1,5 @@
+import csv
+import io
 import os
 import hmac
 import hashlib
@@ -5,7 +7,7 @@ import base64
 import json
 import re
 import requests
-from datetime import datetime
+from datetime import datetime, date, timedelta
 from zoneinfo import ZoneInfo
 from flask import Flask, request, abort
 
@@ -86,16 +88,100 @@ AGENT_NAMES = {"sophie": "Sophie", "lisa": "Lisa", "helen": "Helen"}
 
 # ── Google Sheet ─────────────────────────────────────────────────
 
-def get_daily_sheet() -> str:
+def fetch_and_format_today(today_date: date) -> str:
+    """Parse Daily.gsheet CSV and format Sophie's reply directly in Python."""
     url = f"https://docs.google.com/spreadsheets/d/{DAILY_SHEET_ID}/export?format=csv&gid=0"
     try:
-        resp = requests.get(url, timeout=15, allow_redirects=True)
-        ct = resp.headers.get("Content-Type", "")
-        if resp.status_code == 200 and ("csv" in ct or not resp.text.strip().startswith("<")):
-            return resp.text[:4000]
-        return "（試算表尚未設為公開，無法讀取。請設定「知道連結的人可以檢視」。）"
+        resp = requests.get(url, timeout=20, allow_redirects=True)
+        if resp.status_code != 200:
+            return "（試算表讀取失敗，請確認已設為「知道連結的人可以檢視」）"
+        rows = list(csv.reader(io.StringIO(resp.content.decode("utf-8"))))
     except Exception as e:
         return f"（讀取失敗：{e}）"
+
+    year = today_date.year
+    today_weekday = WEEKDAYS[today_date.weekday()]
+
+    today_tasks: list[str] = []
+    today_note = ""
+    diary_yet_past: list[str] = []
+    upcoming: list[tuple] = []
+
+    for row in rows[1:]:
+        if not row or not row[0].strip():
+            continue
+        date_str = row[0].strip()
+        try:
+            m, d = map(int, date_str.split("/"))
+            row_date = date(year, m, d)
+        except Exception:
+            continue
+
+        tasks_raw = row[2].strip() if len(row) > 2 else ""
+        extra = row[3].strip() if len(row) > 3 else ""
+        note = row[5].strip() if len(row) > 5 else ""
+
+        # Past 10 days: collect diary yet markers
+        if row_date < today_date and (today_date - row_date).days <= 10:
+            if "diary yet" in extra.lower() or "diary yet" in tasks_raw.lower():
+                diary_yet_past.append(f"{m}/{d}")
+
+        # Today
+        elif row_date == today_date:
+            tasks: list[str] = []
+            current = ""
+            for line in tasks_raw.split("\n"):
+                line = line.strip()
+                if not line or line.startswith("--"):
+                    continue
+                if line.startswith("●"):
+                    if current:
+                        tasks.append(current)
+                    current = line[1:].strip()
+                elif current:
+                    current += " " + line  # continuation line
+            if current:
+                tasks.append(current)
+            today_tasks = tasks
+            today_note = note
+
+        # Upcoming (next 14 days)
+        elif today_date < row_date <= today_date + timedelta(days=14):
+            sub: list[str] = []
+            for line in tasks_raw.split("\n"):
+                line = line.strip()
+                if not line or line.startswith("--"):
+                    continue
+                if line.startswith("●"):
+                    t = line[1:].strip()
+                    if "9點開例會" not in t:
+                        sub.append(t)
+            if sub:
+                upcoming.append((row_date, sub, note))
+
+    # ── Format output ──
+    if not today_tasks:
+        return f"今天 {today_date.month}/{today_date.day}（{today_weekday}）的日誌還沒有記錄喔！"
+
+    lines: list[str] = ["今天要做的事\n"]
+    for i, task in enumerate(today_tasks, 1):
+        if "日誌" in task and diary_yet_past:
+            task += f"（{', '.join(diary_yet_past)} diary yet，記得一起補）"
+        lines.append(f"{i}. {task}")
+
+    if upcoming:
+        lines.append("\n---\n近期重要提醒\n")
+        for row_date, sub, note in upcoming:
+            wday = WEEKDAYS[row_date.weekday()]
+            date_label = f"{row_date.month}/{row_date.day}（{wday}）"
+            combined = "；".join(sub)
+            lines.append(f"- {date_label} — {combined}")
+
+    if today_note:
+        lines.append(f"\n---\n小提醒：{today_note}")
+
+    lines.append("\n需要我幫你起草什麼 mail，或整理資料嗎？")
+    return "\n".join(lines)
 
 # ── Notion tools ─────────────────────────────────────────────────
 
@@ -248,35 +334,12 @@ def webhook():
 
         agent = detect_agent(user_text)
 
-        # Sophie + To do list → 讀 Google Sheet
+        # Sophie + To do list → parse Google Sheet directly
         if agent == "sophie" and "to do list" in user_text.lower():
             taipei = ZoneInfo("Asia/Taipei")
-            now = datetime.now(taipei)
-            today_str = f"{now.month}/{now.day}（{WEEKDAYS[now.weekday()]}）"
-
-            sheet_csv = get_daily_sheet()
-            prompt_msg = f"""今天是 {today_str}。
-
-以下是 Peggy 的工作日誌試算表（CSV 格式）：
-{sheet_csv}
-
-請根據以上資料整理出：
-
-一、今天 {today_str} 的工作待辦清單（有幾項列幾項，附上備註/細節）
-二、近期重要提醒（未來 2 週內，含日期與週幾）
-
-輸出格式：
-今天要做的事
-
-1. 事項 — 說明
-2. 事項 — 說明
-
-近期重要提醒
-- M/D（週幾）— 事項
-
-最後一行：簡短詢問是否需要幫她起草 mail 或整理資料。"""
-            ai_reply = call_gemini(SOPHIE_PROMPT, prompt_msg)
-            reply_line(reply_token, f"[Sophie]\n{ai_reply}")
+            today_date = datetime.now(taipei).date()
+            reply_text = fetch_and_format_today(today_date)
+            reply_line(reply_token, f"[Sophie]\n{reply_text}")
             continue
 
         # 一般 AI 回應
