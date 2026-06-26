@@ -334,8 +334,10 @@ def push_line(user_id: str, text: str):
 
 _RATE_LIMIT_MSG_CUSTOMER = "感謝您的詢問！已收到您的問題，Peggy將盡快為您確認並回覆＾＾"
 _RATE_LIMIT_MSG_INTERNAL = "AI 今日額度暫時達上限，明天恢復後繼續！"
+_credit_exhausted_notified = False
 
 def call_claude(system_prompt: str, user_message: str, customer_facing: bool = False) -> str:
+    global _credit_exhausted_notified
     try:
         msg = _claude.messages.create(
             model="claude-haiku-4-5",
@@ -347,6 +349,15 @@ def call_claude(system_prompt: str, user_message: str, customer_facing: bool = F
     except anthropic.RateLimitError:
         print("[Claude Error] Rate limit exceeded")
         return _RATE_LIMIT_MSG_CUSTOMER if customer_facing else _RATE_LIMIT_MSG_INTERNAL
+    except anthropic.BadRequestError as e:
+        if "credit" in str(e).lower() or "balance" in str(e).lower():
+            print("[Claude Error] Credit exhausted")
+            if not _credit_exhausted_notified:
+                _credit_exhausted_notified = True
+                push_line(LINE_USER_ID, "⚠️ Anthropic credit 耗盡！請至 console.anthropic.com 補充，目前 Eva / Sophie / Lisa / Helen 均無法回應。")
+            return _RATE_LIMIT_MSG_CUSTOMER if customer_facing else "⚠️ AI credit 耗盡，請補充後再試。"
+        print(f"[Claude Error] Bad request: {e}")
+        return "抱歉，AI 暫時無法回應，請稍後再試。"
     except anthropic.APIError as e:
         print(f"[Claude Error] API error: {e}")
         return "抱歉，AI 暫時無法回應，請稍後再試。"
