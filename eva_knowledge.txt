@@ -1,332 +1,1798 @@
-# JIDIN_Peggy 產品知識庫（Eva 專用，不含報價）
+# JIDIN_Peggy 產品代理清單（Eva 專用知識庫）
 # 更新日期：2026-06-26
+# 用途：Eva 只回答「有代理 / 沒有代理」，不透露任何價格
 
-## 工業相機
+## 工業相機 & 光源 & 周邊設備（牌價表日期：2026-6-16）
 
-### Basler（代理商，主力品牌）
-產品線：ace Series（GigE / USB3 / CXP）
-  - acA640-120gm：659x494 , 120fps , 5.6umx5.6um
-  - acA640-120gc：659x494 , 120fps , 5.6umx5.6um (LAST BUY:30-Nov-21)
-  - acA640-121gm：659x494 , 130fps , 5.6umx5.6um
-  - acA640-90gm：659x494 , 90fps , 7.4umx7.4um (LAST BUY:31-Mar-22)
-  - acA640-90gc：659x494 , 90fps , 7.4umx7.4um
-  - acA640-300gm：640x480, 376fps, mono
-  - acA640-300gc：640x480, 376fps, color
-  - acA645-100gm：659x494 , 100fps ,
-  - acA645-100gc：659x494 , 100fps ,
-  - acA720-290gm：720x540 , 293fps ,
-  （更多型號請洽 Peggy 確認）
+### ALSON
+  - AT-S1000-01A-S1
+  - AT-S1000-01A-S2
+  - AT-S1000-02A-W
+  - AT-S1000-04A-S1
+  - AT-S1000-04A-S2
+  - AT-S1000-04A-ET
+  - AT-S1000-02B
+  - AT-S1000-03B
+  - AT-S1000-01C-H
+  - AT-S1000-01C-H-L
+  - AT-S1000-06C-S
+  - AT-S1000-06C-S1
+  - AT-S1000-06C-S2
+  - AT-S1000-07C
+  - AT-S1000-07C-S1
+  - AT-S1000-01D
+  - AT-S1000-01S
 
-### Basler boost / dart / racer 系列
-  - ral2048-48gm：Optional
-  - ral2048-80km：Optional
-  - ral4096-24gm：Optional
-  - ral4096-80km：Optional
-  - boost series - CoaXPress 2.0：
-  - boA4500-45cm：108389.0
-  - boA4500-45cc：108390.0
-  - boA6500-36cm：108391.0
+### ARTRAY
+  - ARTCAM-022MINI/-BW
+  - ARTCAM-407UV-WOM
+  - ARTCAM-500MI-WOM
+  - ARTCAM-2020UV-CL
+  - ARTCAM-2020UV-USB3
+  - ARTCAM-130UV-WOM
+  - ARTCAM-990SWIR
+  - ARTCAM-992SWIR-TEC
+  - UV2528B
+  - UV2528B
+  - UV5035B
 
-### Sony 工業相機
-  - Sony Camera：品名
-  - XC-ST30：
-  - XC-ST50：
-  - XC-ST50CE：
-  - XC-ST51：
-  - XC-ST51CE：
-  - XC-ST70：
-  - XC-HR50：
+### VS
+  - Page
+  - NEW CCTV LENS
+  - NEW CCTV LENS FOR 2M~3M PIXEL
+  - SV-V 系列           NEW CCTV LENS FOR  VGA
+  - 用美金
+  - 用美金
+  - 用美金
+  - 用美金
+  - 用美金
+  - 用美金
+  - 用美金
+  - 用美金
+  - 用美金
+  - SV-V IR系列
+  - Fast CCTV Lens series  F0.95
+  - New
+  - Rear Converter lens
+  - Extension tubes and rings
+  - 台製延伸環
+  - 1:6　Zoom　telecentric　for megapixel
+  - 1:6 Zoom front converter lens for telecentric lens
+  - 1:3 zoom
+  - 1:8 zoom
+  - Front converter lens
+  - 1:3 zoom Megapixel
+  - 1:4 zoom
+  - Not in catalog
+  - Not in catalog
+  - High Mag
+  - Low Mag.
+  （共 78 筆，以上為部分型號）
 
-### 大華（Dahua）工業相機
-  - A3B00MG000E：
-  - A5B57MK200E：
-  - A7500CG20E：
-  - AE3B00CG010：透過登順問的
-  - AX5E07CT250E：
-  - AX7Q10MX470：(CXP介面)
-  - L5047CG140E：
-  - L5042CG141E：
+### NET camera
+  - GimaGO -Gigabit Ethernet - CCD B/W Camera
+  - P. O. No.
+  - GO124B
+  - GO134B
+  - GO323B
+  - GO423B
+  - GO433B
+  - GO443B
+  - GO531B
+  - GimaGOs -Gigabit Ethernet - CCD Color Camera
+  - P. O. No.
+  - GO124C
+  - GO134C
+  - GO323C
+  - GO423C
+  - GO433C
+  - GO443C
+  - GO531C
+  - P. O. No.
+  - C-NS1044BU
+  - C-NS1130BU
+  - P. O. No.
+  - C-NS1044CU
+  - C-NS1130CU
+  - C-NS1201CU
+  - C-NS1300CU
+  - C-NS1500CU
+  - FOculus - CCD B/W Camera
+  - P. O. No.
+  - FO124B**
+  （共 133 筆，以上為部分型號）
 
-### NET Camera（網路攝影機 / AI 相機）
-  - GimaGO -Gigabit Ethernet - CCD B/W Camera：
-  - P. O. No.：
-  - GO124B：
-  - GO134B：
-  - GO323B：
-  - GO423B：
+### Sony
+  - Sony Camera
+  - XC-ST30
+  - XC-ST50
+  - XC-ST50CE
+  - XC-ST51
+  - XC-ST51CE
+  - XC-ST70
+  - XC-HR50
+  - XC-HR50
+  - XC-HR57
+  - XC-HR70
+  - XC-HR70
+  - XC-HR70
+  - XC-56
+  - XC-56
+  - XCD-X710CR
+  - JB-77
+  - BNC-BNC robot cable 10m
+  - BNC-BNC robot cable 10m
+  - HR10A-10P-12S
+  - HR10A-10P-12S
+  - XCD-SX910
+  - LD-K120R
+  - XC-ES50
+  - XC-ES50
+  - XC-ES50
+  - XC-ES50
+  - XC-ES50CE
+  - LPQ-48BL
+  - XCD-X710
+  （共 100 筆，以上為部分型號）
 
-### 其他代理相機品牌
-  ALSON, ARTRAY, Aval Global, Bitflow, CEI, ILUMINA, Imperx, Intercon1, IOI, ISVI, LAK, MOZI, Panasonic, PhotonFocus, RSEE, RDV, Veritec, 台達, Sentech, FAST, Nevis, EPIX, 丞基, 金品, 深視, 匯萃, 登順, 惠寶, Illunis, 蘇映視(new)
+### Aval Global
+  - APX-721
+  - APX-741B
+  - APX-781
+  - SDK
 
-## 光源 & 光控器
+### Basler (ACE)
+  - acA640-120gm
+  - acA640-120gc
+  - acA640-121gm
+  - acA640-90gm
+  - acA640-90gc
+  - acA640-300gm
+  - acA640-300gc
+  - acA645-100gm
+  - acA645-100gc
+  - acA720-290gm
+  - acA720-290gc
+  - acA750-30gm
+  - acA750-30gc
+  - acA780-75gm
+  - acA780-75gc
+  - acA800-200gm
+  - acA800-200gc
+  - acA1280-60gm
+  - acA1280-60gc
+  - acA1300-22gm
+  - acA1300-22gc
+  - acA1300-30gm
+  - acA1300-30gc
+  - acA1300-60gm
+  - acA1300-60gmNIR
+  - acA1300-60gc
+  - acA1300-75gm
+  - acA1300-75gc
+  - acA1600-20gm
+  - acA1600-20gc
+  （共 401 筆，以上為部分型號）
 
-### OPT（主力品牌）
-  類型：AOI 專用光源, 光源控制器, 同軸光源, 條形光源, 環形光源, 線掃光源, 背光光源
-  光色：紅、綠、藍、白、紅外、UV
+### Basler nonACE
+  - Basler Vision Technologies - Basler Components Price List
+  - Part Number
+                                             
+Model Number
+  - Line Scan Cameras
+  - BASLER Sprint Series.
+  - spL4096-39km
+  - spL4096-50km
+  - spL4096-70km
+  - spL4096-140km
+  - spL4096-39kc
+  - spL4096-50kc
+  - spL4096-70kc
+  - spL4096-140kc
+  - *S Please refer to mounting accessories for the lens mount of 8k Sprint.
+  - BASLER RACER Series.
+  - ral2048-48gm
+  - ral2048-80km
+  - ral4096-24gm
+  - ral4096-80km
+  - RAL6144-16GM
+  - RAL6144-80KM
+  - RAL8192-12GM
+  - RAL8192-80KM
+  - RAL12288-8GM
+  - RAL12288-66KM
+  - r2L2048-58gm
+  - r2L4096-29gm
+  - r2L2048-29gc
+  - r2L4096-14gc
+  - r2L2048-172g5m
+  - r2L4096-84g5m
+  （共 731 筆，以上為部分型號）
 
-### CCS（日本品牌，高端光源）
-  類型：環形、背光、條形、同軸、Dome 等
-
-## 鏡頭
+### Bitflow
+  - ANALOG FRAME GRABBERS PCI EXPRESS (X4 SLOT)
+  - ALT-PCE-AN1
+  - ALT-PCE-AN4
+  - NEON-CL      CAMERA LINK         PCI EXPRESS (X4 SLOT)
+  - NEO-PCE-CLB
+  - NEO-PCE-CLB
+  - NEO-PCE-CLB
+  - NEO-PCE-CLB
+  - NEO-PCE-CLB
+  - NEO-PCE-CLB
+  - NEO-PCE-CLB
+  - NEO-PCE-CLD
+  - NEO-PCE-CLD
+  - NEO-PCE-CLD
+  - NEO-PCE-CLQ
+  - NEO-PCE-DIF
+  - KARBON-CL      CAMERA LINK         PCI EXPRESS (X8 SLOT)
+  - KBN-PCE-CL2-D
+  - KBN-PCE-CL2-F
+  - KBN-PCE-CL2-F
+  - KBN-PCE-CL2-F
+  - KBN-PCE-CL2-F
+  - KBN-PCE-CL2-F
+  - KBN-PCE-CL4-D
+  - KBN-PCE-CL4-D
+  - KBN-PCE-CL4-F
+  - KBN-PCE-CL4-SP
+  - CYT-PC2-CXP2
+  - CYT-PC2-CXP2-T
+  - CYT-PC2-CXP4
+  （共 108 筆，以上為部分型號）
 
 ### CCS
-  - Telecentric Lens：LED
-  - "Telecentric Lens+LED Light" Set Price to Jidien：
-  - SE-110ST08：LDR2-32BL2-JD
-  - SE-110ST10：LDR2-32GR2-JD
-  - SE-110ST15：LDR2-32RD2-JD
-  - SE-110ST20：LDR2-32SW2-JD
+  - NEW
+  - 客製品
+  - 客製品
+  - 客製品
+  - HLV3系列
+  - NEW
+  - 22(1000mA)型號
+  - 22(700mA)型號
+  - 22(385mA)型號
+  - 14(275mA)型號
+  - 紅外光型號
+  - 附屬品
+  - AC TYPE
+  - DC24V TYPE
+  - 搭配使用
+  - NEW
+  - NEW
+  - NEW
+  - NEW
+  - Fpr BB Stand
+  - NEW
+  - PFB2系列
+  - PFB3系列
+  - NEW
+  - TH2系列
+  - NEW
+  - NEW
+  - NEW
+  - TH系列
+  - LC-TH系列
+  （共 128 筆，以上為部分型號）
 
-### CCS
-  - SE-110ST08：1
-  - SE-110ST10：1
-  - SE-110ST15：1
-  - SE-110ST20：1
-  - SE-110ST40：1
-  - SE-65ST08：1
+### CEI
+  - CX-11-5-11-05
+  - CX-11-5-11-05
+  - CX-14-1-304-10
+  - CX-301-2-301-05
+  - CX-301-2-301-05
+  - CX-301-2-301-10
+  - CX-301-2-301-10
+  - CX-301-2-301-18
+  - CX-301-2-301-18
+  - CX-301-3-301-10
+  - CX-301-3-301-10
+  - CX-304-1-304-03
+  - CX-304-1-304-05
+  - CX-304-1-304-08
+  - CX-304-1-304-10
+  - CX-304-1-304-15
+  - CX-801-4-801-15
+  - CX-801-4-801-15
+  - CX-801-5-801-05
+  - CX-801-5-801-05
+  - CX-801-5-801-07
+  - CX-801-5-801-07
+  - CX-801-5-801-10
+  - CX-801-5-801-10
+  - CX-801-5-801-15
+  - CX-801-5-801-15
+  - CX-801-5-801-20
+  - CX-801-5-801-20
+  - CX-801-6-801-20
+  - CX-801-6-801-20
+  （共 339 筆，以上為部分型號）
 
-### Computar希比希
-  - TEC-M0565MPC：0.5X 同軸
-  - TEC-M0565MP：0.5X
-  - TEC-M0865MPC：0.8X 同軸
-  - TEC-M0865MP：0.8X
-  - TEC-M1065MPC：1.0X 同軸
-  - TEC-M1065MP：1.0X
+### ILUMINA
+  - 环光
+  - 环光
+  - 环光
+  - 环光
+  - 环光
+  - 环光
+  - 环光
+  - 环光
+  - 环光
+  - 环光
+  - 环光
+  - 环光
+  - 环光
+  - 环光
+  - 环光
+  - 环光
+  - 环光
+  - 环光
+  - 环光
+  - 环光
+  - 环光
+  - 环光
+  - 环光
+  - 环光
+  - 环光
+  - 环光
+  - 环光
+  - 环光
+  - 轉接環
+  - 环光
+  （共 842 筆，以上為部分型號）
 
-### FUJINON
-  - TF8DA-8B：
-  - HF6XA-5M：特價
-  - HF6XA-5M：
-  - HF8XA-5M：特價
-  - HF8XA-5M：
-  - HF12XA-5M：特價
+### Imperx
+  - Camera Line: Bobcat: Camera Link
+  - ICL-B4822C-KF0
+  - ICL-B4822M-KF0
+  - ICL-B4820C-KF0
+  - ICL-B4820M-KF0
+  - ICL-B4022C-KFO
+  - ICL-B4022M-KFO
+  - ICL-B4020C-KFO
+  - ICL-B4020M-KFO
+  - ICL-B2520C-SC0
+  - ICL-B2520M-SC0
+  - ICL-B2020C-KFO
+  - ICL-B2020M-KFO
+  - ICL-B1920C-KCO
+  - ICL-B1920M-KCO
+  - ICL-B1620C-KCO
+  - ICL-B1620M-KCO
+  - ICL-B1610C-SC0
+  - ICL-B1610M-SC0
+  - ICL-B1410C-SC0
+  - ICL-B1410M-SC0
+  - ICL-B0620C-KC0
+  - ICL-B0620M-KC0
+  - ICL-B0610C-KC0
+  - ICL-B0610M-KC0
+  - ICL‐B6620M‐KF0
+  - ICL‐B6620C‐KF0
+  - ICL‐B6640M‐KF0
+  - ICL‐B6640M‐KF0
+  - ****Bobcat 0610, 0620, 1410, 1610, 1920, 2520 models come standard with C-Mount, if ordered with F-Mount a $100.00 add charge needs to be entered
+  （共 185 筆，以上為部分型號）
 
-### Kragonfly
-  - KF-TLH1-180C：
-  - KF43-3528：
-  - KF-AFMS460 (GP-460H)：200萬畫素 (包含GP-460H*1+1.4X  0.5X*2)
-  - KF-AFMS420(GP-420H)：500萬畫素 (包含GP-420H*1+ 0.5X*1)
-  - KF-AFMS410(GP-410H)：1200萬畫素 (包含GP-410H*1+ 0.5X*1)
-  - GP-460H-C：單獨相機
+### Intercon1
+  - GIGE CABLE Cat5e (POE)
+  - F-GEVPT-3.0-P
+  - F-GEVPT-3.0-P
+  - F-GEVPT-3.0-P
+  - NBF-GEVPT-3.0-P
+  - F-GEVPT-3.0-P
+  - F-GEVPT-3.0-P
+  - F-GEVPT-3.0-P
+  - F-GEVPT-5.0-P
+  - F-GEVPT-5.0-P
+  - F-GEVPT-5.0-P
+  - F-GEVPT-5.0-P
+  - F-GEVPT-5.0-P
+  - F-GEVPT-5.0-P
+  - F-GEVPT-10-P
+  - F-GEVVPT-15-P
+  - F-GEVPTU-25-P
+  - F-GEVVPT-5.0-P
+  - GIGE CABLE Cat6a (POE)
+  - IFC6-GEVPT-3.0-P
+  - IFC6-GEVPT-5.0-P
+  - IFC6-GEVPTU-10-P
+  - IFC-GEVPTD-10-P
+  - CAMERA LINK CABLE
+  - CLCP-5.0-P
+  - MCLCP-3.0-P
+  - MCLCP-5.0-P
+  - POMCLP-3.0-P
+  - POMCLP-5.0-P
+  - MCLCP-5.0-MP
+  （共 39 筆，以上為部分型號）
 
-### KOWA
-  - LM8JC10M：2/3" 8.5mm F1.8~22,10MP鏡頭
+### IOI
+  - Part No.
+  - DIGITAL VIDEO RECORDERS
+  - DVR EXPRESS CORE - PRODUCT FAMILY
+  - CORE2CL
+  - CORE2CLPLUS
+  - CORE2CLMAX
+  - CORE2CLMAXSERVER
+  - CORE2CX
+  - CORE2CXPLUS
+  - CORE2CXMAX
+  - CORE2CXMAXSERVER
+  - CORE2SDI
+  - CORE2SDIMAX
+  - CORE2SDIMAXSERVER
+  - COREGEV
+  - CORENTSC
+  - CORESVIDEO
+  - *Limit supply. Contact IO Industries for availability prior to ordering.
+  - Parts included:
+  - -CoreView interactive software (site license)
+  - -p/n CABCORESATA (eSATA cable)
+  - -p/n CORESHUTTLE (drive shuttle)
+  - -p/n CABCOREUSB3 (Core 2 models only)
+  - Parts not included:
+  - -CORE2CX[PLUS] models: AC power adapter p/n COREPWR5CXP[xx] must be separately ordered (see ACCESSORIES below)
+  - -CORE2CL[PLUS], CORE2SDI models: AC power adapter p/n COREPWR5[xx] must be separately ordered (see ACCESSORIES below)
+  - -COREGEV, CORENTSC, CORESVIDEO models: AC power adapter p/n COREPWR5[xx] must be separately ordered (see ACCESSORIES below)
+  - -CORE2xxMAX and CORE2xxMAXSERVER models: Power cords for Europe and UK sold separately (see ACCESSORIES below)
+  - -Media is not included and must be ordered separately (see DVR EXPRESS CORE 1 and 2 - MEDIA below)
+  - DVR EXPRESS CORE 1 - OPTIONS
+  （共 387 筆，以上為部分型號）
 
-### Myutron
-  - FV0420：1/2 f4mm F2.0 1MP
-  - FV0622：1/2 f6mm F2.2 1MP
-  - FV1022：1/2 f10mm F2.2 1MP
-  - FV1520：2/3 f15mm F2.0 1MP
-  - FV2020：2/3 f20mm F2.0 1MP
-  - FV2520：2/3 f25mm F2.0 1MP
+### ISVI
+  - IC-M25B-CL
+  - IC-M25S-CXP-FMB
+  - IC-M25B-CL-FMB
 
-### NIKON
-  - OVM05042MN  F mount：
-  - OVM05042MN-M95E：
+### LAK
+  - 停產
+  - 新型號
+  - 高亮度
+  - 高亮度
+  - NEW
+  - Diffuser
+  - Polariser
+  - Adapter
+  - PowerSupply
+  - Extension Cable
+  - 12VDC
+  - Extension Cable
+  - 24VDC
+
+### Neurocle
+  - Neurocle
 
 ### OPT
-  - JID-CDP2528：高解析工業鏡頭 焦距25mm ; 17.6mm靶面(1.1") ; 分辨率208lp/mm ; 鍍膜
-  - JID-CDP3528：高解析工業鏡頭 焦距35mm ; 17.6mm靶面(1.1") ; 分辨率208lp/mm ; 鍍膜
-  - OPT-COB0828：Cobra系列定焦鏡頭 8mm/F2.8
-  - OPTTW-MH05-110C：MH系列遠心鏡頭，倍率0.5X 距離110mm
-  - OPT-MH05-65：0.5X 2/3"遠心鏡頭WD65
-  - OPTTW-C1216-5M：5百萬畫素12mm鏡頭
+  - JID-16K-CLM1L40-17
+  - JID-AOI100-V02
+  - JID-AOI110
+  - JID-AP1024F-3
+  - JID-RI7030-W
+  - JID-R7030-R
+  - JID-RIA263-RGB-VJD
+  - OPT-AP1024F-4
+  - OPT-FL4336-R
+  - OPT-FL4336-W
+  - OPTTW-6S-TY-03
+  - OPTTW-AP1024F-1
+  - OPTTW-AP1024F-2
+  - OPTTW-AP1024F-4
+  - OPTTW-C1220-10M
+  - OPTTW-CBA-G10G-05
+  - OPTTW-CC200-GM-04
+  - OPTTW-CM500-GM-04
+  - OPTTW-CO60-W
+  - OPTTW-CO80-B
+  - OPTTW-DOFP150-W
+  - OPTTW-DPA2024E-4
+  - OPTTW-DPA2024E-8
+  - OPTTW-FL4336-W
+  - OPTTW-GigE-05M
+  - OPTTW-LI36232-W
+  - OPTTW-RI7060-W
+  - OPTTW-RI15030-W
+
+### Panasonic
+  - 產品大類
+  - AX系列
+  - AX系列
+  - AX系列
+  - AX系列
+  - AX系列
+  - AX系列
+  - AX系列
+  - AX系列
+  - A系列
+  - A系列
+  - A系列
+  - A系列
+  - A系列
+  - A系列
+  - A系列
+  - A系列
+  - A系列
+  - A系列
+  - A系列
+  - A系列
+  - A系列
+  - A系列
+  - A系列
+  - A系列
+  - A系列
+  - A系列
+  - A系列
+  - A系列
+  - A系列
+  （共 106 筆，以上為部分型號）
+
+### RDV
+  - Sony Camera
+  - XC-ES50
+  - XC-ES50
+  - XC-ES50
+  - CS8620i
+  - CSB4000CL-10A
+  - 17HF
+  - 21HC
+  - 21HC
+  - 21HC
+  - CS 8550dif
+  - CSFX36BC3
+  - CSFS20BC2
+  - CS5260BD
+  - CS8560D
+  - CS8560BD
+  - CA130D
+  - CPRC3700-02
+  - CS3970CL
+  - CS6940CL
+  - CS3970CL
+  - CSFS20CC2
+  - 23FM50SP
+  - 23FM50SP
+  - 23FM16SP
+  - 23FM25SP
+  - 23FM65
+  - 23FM08L
+  - M118FM08
+  - M118FM16
+  （共 61 筆，以上為部分型號）
+
+### Veritec
+  - VERIREAD-LICENSE
+  - VERIREAD-LICENSE
+  - VERIREAD-LICENSE
+
+### 大華
+  - A3B00MG000E
+  - A5B57MK200E
+  - A7500CG20E
+  - AE3B00CG010
+  - AX5E07CT250E
+  - AX7Q10MX470
+  - L5047CG140E
+  - L5042CG141E
+  - L5087CK670E
+  - L5087MK470
+
+### 台達
+  - DMV-CM5MCCL
+  - DMV-CAF10CL
+  - DMV1000-80GX
+  - DMV1000-80GXC
+  - DMV1000-KEY
+  - DMV1000-GE2-VL
+  - DMV-CAF5MG5E
+  - DMV-CAG10MG5E
+  - DMV-CV300GM120
+  - DMV-CV800GM060
+  - DMV-CDA80GS
+  - DMV-CA45
+  - DMV-CA50F
+  - DMV-CM2MCCL
+  - DMV-CAF03CL
+  - DMV-LN12M
+  - DMV-LN16M
+  - DMV-CD80GS
+  - DMV-VGR
+  - DMV-LIB
+  - DMV-IDM
+  - DMV2000主機
+  - DMV2000-CL2-HS
+  - DMV2000-CL4-HS
+  - 鏡頭
+  - DMV-LN06W40
+  - DMV-LN08W40
+  - DMV-LN12W40
+  - DMV-LN16W40
+  - DMV-LN25W40
+  （共 210 筆，以上為部分型號）
+
+### 台製
+  - LV-8-R-12V
+  - LV-8-R-12V
+  - XCL-5000
+  - XCL-5005
+  - XCD-SX90
+  - XC-ST50
+  - XC-HR50
+  - XC-HR50
+  - XC-HR70
+  - XC-HR90
+  - MVC-1-1-5-1M
+  - MVC-1-1-5-2M
+  - MVC-1-1-5-3M
+  - MVC-1-1-5-5M
+  - MVC-1-1-5-7M
+  - MVC-1-1-5-10M
+  - MVC-1-1-5-12M
+  - MVC-1-1-1-0.3M
+  - MVC-1-1-1-3M
+  - MVC-1-1-1-5M
+  - MVC-1-1-1-7M
+  - MVC-1-1-1-10M
+  - MVC-1-1-3-3M
+  - MVC-1-1-3-5M
+  - MVC-1-1-4-3M
+  - MVC-1-1-6-10M
+  - MVC-1-1-8-1M
+  - MVC-1-1-9-1M
+  - MVC-1-2-1-7M
+  - MVC-1-2-3-3M
+  （共 641 筆，以上為部分型號）
+
+### Sentech
+  - STC-B33USB
+  - STC-B33USB
+  - STC-A33A
+  - STC-A83A
+  - STC-A152A
+  - STC-A202A
+  - STC-R640CT
+  - STC-R640HD2
+  - MSC-8STE
+  - STC-130BJ
+  - STC-160BT
+  - STC-160BT2
+  - STC-172BT
+  - STC-E42A
+  - STC-E43A
+  - STC-CLC33A
+  - STC-CL33A
+  - STC-CL152A
+  - STC-CLC152A
+  - STC-CL202A
+  - STC-CLC202A
+  - STC-CL232A
+  - STC-CLC232A
+  - STC-CL232A Holder
+  - STC-CL1500
+  - STC-CL500A
+  - STC-CLC500A
+  - STC-N63CJ
+  - STC-400
+  - STC-400L
+  （共 93 筆，以上為部分型號）
+
+### FAST
+  - FVX開發軟體
+  - RICE-001a
+  - FVC05
+  - FVC06
+  - LicenceKey
+
+### Nevis
+  - MV-BS20A
+  - MV-BS20U
+  - MV-BX30A
+  - MV-BE30A
+  - MVC-5-2-5-3M
+  - MVC-5-2-5-5M
+  - MVC-1-1-1-3M
+  - MVC-5-1-5-3M
+  - MVC-1-1-1-5M
+  - MVC-5-1-5-5M 1
+  - MVC-1-1-5-3M
+  - MVC-1-1-5-2M
+  - MVC-1-1-5-5M
+  - MVC-1-2-5-3M
+  - MAV-10-2-4-3M
+  - MAV-10-2-4-5M
+  - CY-S-0558-5M
+  - MVF 3-1-4-4.5M
+  - MVF 3-2-4-4.5M
+  - SVS625MFCP
+  - SVS-16000
+  - SVS-11000
+  - HF12.5SA-1
+  - LNT0828-5MP
+  - CY-S-0742-3M
+
+### EPIX
+  - FRAME GRABBERS FOR STANDARD ANALOG CAMERA
+  - PIXCI SV5
+  - PIXCI SV5A
+  - PIXCI SV5B
+  - RS422 OR LVDS OUTPUT DIGITAL CAMERA
+  - PIXCI D2X
+  - PIXCI D3X
+  - PCI CAMERA LINK CAMERA
+  - PIXCI CL1
+  - PIXCI CL2
+  - PCI EXPRESS CAMERA LINK CAMERA
+  - PIXCI EB1
+  - PIXCI EB1P
+  - PIXCI EL1
+  - PIXCI EL1DB
+  - PIXCI E4
+  - PIXCI E4DB
+  - EXPRESS Card Frame Grabbers for Notebook CameraLink Camera
+  - PIXCI EC1
+  - PIXCI ECB1
+  - PIXCI ECB2
+  - SILICON VIDEO Camera System for PCI Bus ( 含 7 foot cable )
+  - SI-SV9C10-7FT
+  - SI-SV5C10-7FT
+  - SI-SV5M10-7FT
+  - SI-SV9T001C-7FT
+  - SI-SV9M001C-7FT
+  - SI-SV9M001M-7FT
+  - SI-SV642C-7FT
+  - SI-SV642M-7FT
+  （共 64 筆，以上為部分型號）
+
+### 丞基
+  - 環形光((角度0°&30°)
+  - GL-DR3016R
+  - GL-DR3210R
+  - GL-DR3210W/B/G
+  - GL-DR3210IR
+  - GL-DR3210R-24
+  - GL-DR3210W/B/G-24
+  - GL-DR3210IR-24
+  - GL-DR4218R
+  - GL-DR4218W/B/G
+  - GL-DR4218IR
+  - GL-DR4218R-24
+  - GL-DR4218W/B/G-24
+  - GL-DR4218IR-24
+  - GL-DR5028R
+  - GL-DR5028W/B/G
+  - GL-DR5028IR
+  - GL-DR5028R-24
+  - GL-DR5028W/B/G-24
+  - GL-DR5028IR-24
+  - GL-DR6736R
+  - GL-DR6736W/B/G
+  - GL-DR6736IR
+  - GL-DR6736R-24
+  - GL-DR6736W/B/G-24
+  - GL-DR6736IR-24
+  - GL-DR6746B
+  - GL-DR9050R
+  - GL-DR9050W/B/G
+  - GL-DR9050IR
+  （共 890 筆，以上為部分型號）
+
+### 金品
+  - MVC-5-2-5-10M-T
+  - UGE-CABLE-5M
+  - USB3-CABLE-10M-FIBER
+  - USB3-CABLE-15M-FIBER
+  - USB3-CABLE-20M-FIBER
+  - USB3-CABLE-3M-FIBER
+  - USB3-CABLE-5M-FIBER
+  - USB3-CABLE-5M-FI-L
+  - USB3-CABLE-5M-FI-R
+  - USB3-CABLE-7M-FIBER
+  - USB-CABLE-5M
+  - USB-CABLE-7M-F
+  - UB3-CABLE-3M
+
+### 深視
+  - 產品線
+  - 线激光
+  - 线激光
+  - 线激光
+  - 线激光
+  - 线激光
+  - 线激光
+  - 线激光
+  - 线激光
+  - 线激光
+  - 线激光
+  - 线激光
+  - 线激光
+  - 线激光
+  - 线激光
+  - 线激光
+  - 线激光
+  - 线激光
+  - 线激光
+  - 线激光
+  - 线激光
+  - 线激光
+  - 线激光
+  - 线激光
+  - 线激光
+  - 线激光
+  - 线激光
+  - 线激光
+  - 线激光
+  - 线激光
+  （共 156 筆，以上為部分型號）
+
+### 匯萃
+  - 產品線
+  - 3D相机
+  - Hcvision軟體
+  - Hcvision軟體
+  - Hcvision軟體
+  - Hcvision軟體
+
+### 登順
+  - XF-TD20III+XF-ADLED3B
+  - HGDC-5V10W-H2
+  - RS-232
+  - Toshiba BU130 Camera
+  - BU238MC
+  - MCEP-CR8-070-3
+  - MCEP-CW8-070-3
+  - MLEP-B070W1LR-100V
+  - MSG6-1100S
+  - MSG6-2200S
+  - MLEP-B070W1LR-200V
+  - 5M的IO线
+  - EV71YC2MCL8005-BA1
+  - DH-VT110
+  - ME2P-900-13GM-P
+  - MER2-2000-6GC
+  - VC-151MC-M5H00
+  - VC-151MX-M6HOO
+  - VC-25MC-M31I00
+  - VC-5MC-M110H00 (CM)
+  - 3M6002
+  - ML-HC-16K10T
+  - OR-A8S0-PX870
+  - AOC-5M数据线
+  - GV-5990SE-C-HQ
+  - GV-5200SE-C-HQ
+  - U3-3992SE-M Rev.1.2
+  - U3-3992SE-C Rev.1.2
+  - UI-1007XS-C-ES
+  - UI-1007XS-C
+  （共 238 筆，以上為部分型號）
+
+### 惠寶
+  - 12P-44P-4M
+  - 12P-B-10M-RACER
+  - 12P-B-15M-RACER
+  - 12P-B-15M-RACER-S
+  - 12P-B-3M-RACER
+  - 12P-B-3M-SCOUT
+  - 12P-B-5M-RACER
+  - 12P-BNC-3M
+  - 12P-BNC-3M-F
+  - 1394B-CABLE-10M
+  - 4P-B-3M-BOAV (HP8A050-3M)
+  - 4P-B-4M
+  - 4P-B-5M
+  - 4P-B-7M
+  - 6P-B-0.5M
+  - 6P-B-10M
+  - 6P-B-13M
+  - 6P-B-15M
+  - 6P-B-2M
+  - 6P-B-3M
+  - 6P-B-5M
+  - 6P-B-7M
+  - 6P-B-TRI-0.5M
+  - 6P-B-TRI-10M
+  - 6P-B-TRI-10M-M8
+  - 6P-B-TRI-15M-M8
+  - 6P-B-TRI-2M
+  - 6P-B-TRI-3.5M
+  - 6P-B-TRI-3M
+  - 6P-B-TRI-3M-M8
+  （共 160 筆，以上為部分型號）
+
+### Illunis
+  - CameraLink 介面
+  - VMV系列
+  - VMV-1M
+  - VMV-2M
+  - VMV-4M
+  - VMV-8M
+  - XMV系列
+  - XMV-2M
+  - XMV-4M
+  - RMV系列
+  - RMV-4M
+  - RMV-11M
+  - RMV-16M
+  - RMV-29M
+  - RMV-29M
+  - RMV-29M
+  - RMV-29M
+  - RMV-29M
+  - RMV-50M
+  - EMCCD
+  - GigE 介面
+  - XMV-2M
+  - RMV-4M
+  - RMV-11M
+  - RMV-16M
+  - EMCCD
+  - VMV-1M
+  - VMV-2M/2MHD
+  - VMV-4M
+  - VMV-8M
+
+### 蘇映視(new)
+  - No.
+  - No.
+  - 軟體部分 (量多可議,競價可議)
+
+## 鏡頭（牌價表日期：2026-6-8）
+
+### CCS lens+LED
+  - Telecentric Lens
+  - SE-110ST08
+  - SE-110ST10
+  - SE-110ST15
+  - SE-110ST20
+  - SE-110ST40
+  - SE-65ST08
+  - SE-65ST10
+  - SE-65ST15
+  - SE-65ST20
+  - SE-65ST40
+  - SE-110VT08
+  - SE-1101VT10
+  - SE-110VT15
+  - SE-110VT20
+  - SE-110VT40
+  - SE-65VT08
+  - SE-65VT10
+  - SE-65VT15
+  - SE-65VT20
+  - SE-65VT40
+  - SE-65VT20
+  - SE-65VT20
+
+### CCS lens
+  - Telecrntric Lens (Straight Type)
+  - SE-110ST08
+  - SE-110ST10
+  - SE-110ST15
+  - SE-110ST20
+  - SE-110ST40
+  - SE-65ST08
+  - SE-65ST10
+  - SE-65ST15
+  - SE-65ST20
+  - SE-65ST40
+  - Telesentric Lens (Coaxial Type)
+  - SE-110VT08
+  - SE-110VT10
+  - SE-110VT15
+  - SE-110VT20
+  - SE-110VT20
+  - SE-110VT40
+  - SE-65VT08
+  - SE-65VT10
+  - SE-65VT15
+  - SE-65VT20
+  - SE-65VT40
+  - SE-16MS
+  - SE-16SM05
+  - SE-16SM1
+  - SE-16SM1
+  - SE-16SM2
+  - SE-16VM05
+  - SE-16VM1
+  （共 71 筆，以上為部分型號）
+
+### Computar希比希
+  - TEC-M0565MPC
+  - TEC-M0565MP
+  - TEC-M0865MPC
+  - TEC-M0865MP
+  - TEC-M1065MPC
+  - TEC-M1065MP
+  - TEC-M2065MPC
+  - TEC-M2065MP
+  - TEC-M03110MPC
+  - TEC-M03110MP
+  - TEC-M05110MPC
+  - TEC-M05110MP
+  - TEC-M08110MPC
+  - TEC-M08110MP
+  - TEC-M10110MPC
+  - TEC-M10110MP
+  - TEC-M15110MPC
+  - TEC-M15110MP
+  - TEC-M20110MPC
+  - TEC-M20110MP
+  - TEC-V0565MPW
+  - TEC-V1065MPW
+  - TEC-V05110MPW
+  - TEC-V10110MPW
+  - H0514-MP2
+  - M0814-MP2
+  - M1214-MP2
+  - M1614-MP2
+  - M2514-MP2
+  - M3514-MP
+  （共 158 筆，以上為部分型號）
+
+### FUJINON
+  - TF8DA-8B
+  - HF6XA-5M
+  - HF6XA-5M
+  - HF8XA-5M
+  - HF8XA-5M
+  - HF12XA-5M
+  - HF12XA-5M
+  - HF16XA-5M
+  - HF16XA-5M
+  - HF25XA-5M
+  - HF25XA-5M
+  - HF35XA-5M
+  - HF35XA-5M
+  - HF50XA-5M
+  - HF818-12M
+  - HF1218-12M
+  - HF1618-12M
+  - HF2518-12M
+  - HF3520-12M
+  - DF6HA-1S
+  - HF9HA-1S
+  - HF12.5HA-1S
+  - HF16HA-1S
+  - HF25HA-1S
+  - HF35HA-1S
+  - HF50HA-1S
+  - HF75HA-1S
+  - CF12.5HA-1
+  - CF16HA-1
+  - CF25HA-1
+  （共 47 筆，以上為部分型號）
+
+### Kragonfly
+  - KF-TLH1-180C
+  - KF43-3528
+  - KF-AFMS460 (GP-460H)
+  - KF-AFMS420(GP-420H)
+  - KF-AFMS410(GP-410H)
+  - GP-460H-C
+  - 1.4X
+  - 0.5X
+  - 0.7-4.5x 顯微鏡鏡頭
+  - 光源 ICH-652(改D100)
+  - GP-481H-4K
+  - KF-AFMS460 (GP-460H)
+  - KF-AFMS420(GP-420H)
+  - KF-AFMS460 (GP-460H)
+  - KF-AFMS420(GP-420H)
+  - 支持2/3"
+  - KF23-0828-10M
+  - KF23-1228-10M
+  - KF23-1628-10M
+  - KF23-2528-10M
+  - KF23-3528-10M
+  - KF23-5028-10M
+  - KF23-7528-10M
+  - 支持1.2"
+  - KF12-1228-25M
+  - KF12-1628-25M
+  - KF12-2528-25M
+  - KF12-3528-25M
+  - KF12-5028-25M
+  - KF12-7528-25M
+  （共 38 筆，以上為部分型號）
+
+### KOWA
+  - LM8JC10M
+
+### Myutron
+  - FV0420
+  - FV0622
+  - FV1022
+  - FV1520
+  - FV2020
+  - FV2520
+  - FV3020
+  - FV3519
+  - FV5025
+  - FV7538
+
+### NIKON
+  - OVM05042MN  F mount
+  - OVM05042MN-M95E
+
+### OPT
+  - JID-CDP2528
+  - JID-CDP3528
+  - OPT-COB0828
+  - OPTTW-MH05-110C
+  - OPT-MH05-65
+  - OPTTW-C1216-5M
+  - OPTTW-C1220-10M
+  - OPTTW-MH05-110A
+  - OPTTW-PPZ27-CPL
+  - OPTTW-PLG27-BPNIR
 
 ### OPTART
-  - MK8M-5MP：2023/9/11通知停產
-  - MK12M-5MP：2023/9/11通知停產
-  - MK16M-5MP：2023/9/11通知停產
-  - MK25M-5MP：2023/9/11通知停產
-  - MK35M-5MP：5 megapixel f35mm 1:1.4 FA CCTV lens, high resolut
-  - VMK1214-C：
+  - MK8M-5MP
+  - MK12M-5MP
+  - MK16M-5MP
+  - MK25M-5MP
+  - MK35M-5MP
+  - VMK1214-C
+  - VMK1614-C
+  - VMK2514-C
+  - VMK3514-C
+  - VMK5014-C
+  - VMK7518-C
+  - VMK7528-C
+  - VMK1228-A
+  - VMK1628-A
+  - VMK2528-A
+  - VMK3528-A
+  - VMK5028-A
+  - VFA1228-A
+  - VFA1628-A
+  - VFA2528-A
+  - VFA3528-A
+  - VFA5028-A
+  - HA3520-A
+  - HA5028-A
+  - MK0828-A
+  - MK1228-A
+  - MK1628-A
+  - MK2528-A
+  - MK3528-A
+  - MK5028-A
+  （共 659 筆，以上為部分型號）
 
 ### OPTO
-  - 360LIB-02：Software library & stand-alone tools for the optim
-  - CBETH003：Ethernet cable, CAT6, industrial level,high flexib
-  - CBGPIO001：I/O cable, side 1 HIROSE 12 pin, side 2 cable end,
-  - CBUSB3001：Passive USB 3.0 cable, industrial level, horizonta
-  - CMHO016：Clamping mechanics for TCxx016 lenses and LTCLHP01
-  - CMHO024：Clamping mechanics for TCxx024 lenses and LTCLHP02
+  - 360LIB-02
+  - CBETH003
+  - CBGPIO001
+  - CBUSB3001
+  - CMHO016
+  - CMHO024
+  - CMHO048
+  - CMHO056
+  - CMHO192R
+  - CMHO240R
+  - CMHOCR048
+  - CMMR048
+  - CMPH004-024
+  - CMPT016-024
+  - CMWF048
+  - COE-032-M-POE-040-IR-C
+  - COE-050-M-POE-050-IR-C
+  - COE-050-M-USB-050-IR-C
+  - COE-6P-OPEN1-030
+  - EN5MP1216
+  - EN5MP1216
+  - FIS-PRO
+  - FTBP525TC
+  - ITA50-GM-10C
+  - LT2BC048036-G
+  - LT2BC048036-G-CO
+  - LT2BC048072-G-CO
+  - LTCLHP024-B
+  - LTCLHP048-G
+  - LTIC1CH-D1-4
+  （共 68 筆，以上為部分型號）
 
 ### OPTOTUNE
-  - Part No.：Part Description
-  - Bracket kit LSR-4：Mounting screws included
-  - CAB-14-20：Electrical lens connection cable
-14 pin cable to c
-  - CAB-14-50：Electrical lens connection cable
-14 pin cable to c
-  - CAB-6-100：Electrical lens connection cable
-6-pin Hirose male
-  - CAB-6-1000：Electrical lens connection cable
-6-pin Hirose male
+  - Part No.
+  - Bracket kit LSR-4
+  - CAB-14-20
+  - CAB-14-50
+  - CAB-6-100
+  - CAB-6-1000
+  - CAB-6-30
+  - CAB-6-300
+  - CAB-6-500
+  - CAB-6-500
+  - EL-10-30-CI-NIR-LD
+  - EL-10-30-CI-NIR-LD-MV
+  - EL-10-30-CI-VIS-LD
+  - EL-10-30-CI-VIS-LD-MV
+  - EL-10-30-C-NIR-LD
+  - EL-10-30-C-NIR-LD-MV
+  - EL-10-30-C-VIS-LD
+  - EL-10-30-C-VIS-LD-MV
+  - EL-10-30-TC-NIR-12D
+  - EL-10-30-TC-NIR-5D
+  - EL-10-30-TC-VIS-12D
+  - EL-10-30-TC-VIS-5D
+  - EL-10-42-OF-NIR-4D-30W
+  - EL-10-42-OF-NIR-4D-30W-S
+  - EL-10-42-OF-NIR-4D-50W
+  - EL-10-42-OF-NIR-4D-50W-S
+  - EL-12-30-TC-VIS-16D
+  - EL-16-40-TC-NIR-20D
+  - EL-16-40-TC-NIR-20D-1
+  - EL-16-40-TC-NIR-20D-1-C
+  （共 216 筆，以上為部分型號）
 
 ### RICOH
-  - Machine Vision Lens "5MX"：
-  - FL-CC0820-5MX：8mm F2.0 with Lock-Screws (Additional Thumb-Screws
-  - FL-CC1218-5MX：12mm F1.8 with Lock-Screws (Additional Thumb-Screw
-  - FL-CC1618-5MX：16mm F1.8 with Lock-Screws (Additional Thumb-Screw
-  - FL-CC2518-5MX：25mm F1.8 with Lock-Screws (Additional Thumb-Screw
-  - FL-CC3524-5MX：35mm F2.4 with Lock-Screws (Additional Thumb-Screw
+  - Machine Vision Lens "5MX"
+  - FL-CC0820-5MX
+  - FL-CC1218-5MX
+  - FL-CC1618-5MX
+  - FL-CC2518-5MX
+  - FL-CC3524-5MX
+  - 9 Mega-Pixel 1" format Lens
+  - FL-BC1220-9M
+  - FL-BC1220-9M
+  - FL-BC1618-9M
+  - FL-BC1618-9M
+  - FL-BC2518-9M
+  - FL-BC2518-9M
+  - FL-BC3518-9M
+  - FL-BC3518-9M
+  - FL-BC5024-9M
+  - FL-BC5024-9M
+  - FL-BC7528-9M
+  - FL-BC7528-9M
+  - 5 Mega-Pixel Lens
+  - FL-CC0814-5M
+  - FL-CC1614-5M
+  - FL-CC2514-5M
+  - 2 Mega-Pixel Lens
+  - FL-HC0514-2M
+  - FL-HC0514-2M
+  - FL-HC0614-2M
+  - FL-HC0614-2M
+  - FL-HC1214-2M
+  - FL-HC1214-2M
+  （共 83 筆，以上為部分型號）
 
 ### Schneider組合
-  - NO.2：
-  - 1097276：1
-  - 20176A：1
-  - 902004A：1
-  - 1054733A：1
+  - NO.2
+  - 20176A
+  - 902004A
+  - 1054733A
+  - NO.9
+  - 20176A
+  - 20176A
+  - 1001041A
+  - 21610A
+  - NO.13
+  - 20178A
+  - 20177A
+  - 20176A
+  - 20059A
+  - 902001A
+  - 13052A
+  - 1072421A
+  - NO.23
+  - 20177A
+  - 1054532A
+  - 13050A
 
 ### Schneider
-  - Lens：
-  - Xenon-Jade 1.2'' - image circle 19.3mm - optimized for sensors with micro-lenses -broadband coated：
-  - JADE：2.8 / 12 C
-  - JADE：2.8 / 16 C
-  - JADE：2.8 / 25 C
-  - JADE：2.8 / 35 C
+  - Lens
+  - Xenon-Jade 1.2'' - image circle 19.3mm - optimized for sensors with micro-lenses -broadband coated
+  - JADE
+  - JADE
+  - JADE
+  - JADE
+  - JADE
+  - Compact Series 400-1000nm 2/3" - IR corrected - broadband coated
+  - CITRINE
+  - CITRINE
+  - CITRINE
+  - CITRINE
+  - Cinegon
+  - Cinegon
+  - Cinegon-M
+  - CITRINE
+  - CITRINE
+  - CITRINE
+  - CITRINE
+  - CITRINE
+  - CITRINE
+  - CITRINE
+  - CITRINE
+  - CITRINE
+  - CITRINE
+  - CITRINE
+  - CITRINE
+  - CITRINE
+  - CITRINE
+  - CITRINE
+  （共 349 筆，以上為部分型號）
 
 ### SPACE
-  - Pyxis 8：JHF8M-5MP
-  - Pyxis 12：JHF12M-5MP
-  - Pyxis 16：JHF16M-5MP
-  - Pyxis 25：JHF25M-5MP
-  - Pyxis 25：JHF25M-5MP
-  - Pyxis 25：JHF25M-5MP
+  - Pyxis 8
+  - Pyxis 12
+  - Pyxis 16
+  - Pyxis 25
+  - Pyxis 25
+  - Pyxis 25
+  - Pyxis 25
+  - Pyxis 25
+  - Pyxis 35
+  - VELA 8
+  - VELA 12
+  - VELA 16
+  - VELA 25
+  - VELA 35
+  - POLARIS
+  - SPICA
+  - VEGA
+  - 1 Mega
+  - 3 Mega
+  - 1 Mega
+  - 1.45Mega MIMOSA
+  - 3Mega VEGA
+  - 3Mega SPICA
+  - 3Mega POLARIS
+  - 3.1Mega
+  - 3.1Mega
+  - 3.1Mega
+  - 3.1Mega
+  - 3.1Mega
+  - 3.1Mega
+  （共 37 筆，以上為部分型號）
 
 ### TAMRON
-  - M118FM06：1
-  - M118FM08：1
-  - M118FM12：1
-  - M118FM16：1
-  - M118FM25：1
-  - M118FM50：1
+  - M118FM06
+  - M118FM08
+  - M118FM12
+  - M118FM16
+  - M118FM25
+  - M118FM50
+  - M117FM06
+  - M117FM08
+  - M117FM12
+  - M117FM16
+  - M117FM25
+  - M117FM35
+  - M117FM50
+  - M112FM08
+  - M112FM12
+  - M112FM16
+  - M112FM25
+  - M112FM35
+  - M112FM50
+  - M112FM75
+  - M112FM06
+  - MA23F08V
+  - MA23F12V
+  - MA23F16V
+  - MA23F25V
+  - MA23F35V
+  - MA23F50V
+  - MA111F16VIR
+  - MA111F25VIR
+  - MA111F35VIR
+  （共 44 筆，以上為部分型號）
 
 ### TOKINA
-  - KCM-05D：
-  - KCM-28P：
-  - KCM-28P：漲價
-  - KCM-Z2：
-  - KCM-Z4.5D：
-  - KCM-05S-65SR：
+  - KCM-05D
+  - KCM-28P
+  - KCM-28P
+  - KCM-Z2
+  - KCM-Z4.5D
+  - KCM-05S-65SR
+  - KCM-1214MP
+  - KCM-3514MP
+  - TC1214-3MP
+  - TC1614-3MP
+  - TC2514-3MP
+  - TC3516-3MP
+  - TC5028-3MP
+  - TC0814-3MPG
+  - TC1214-3MPG
+  - TC1614-3MPG
+  - TC2514-3MPG
+  - TC3520-3MPG
+  - TC5028-3MPG
+  - TC1214-3MP SWIR
+  - TC1614-3MP SWIR
+  - TC2514-3MP SWIR
+  - TC3516-3MP SWIR
+  - TC5028-3MP SWIR
+  - TC1218-8MP
+  - TC1620-8MP
+  - TC2518-8MP
+  - TC3520-8MP
+  - TC5024-8MP
+  - TC0816-10MP
+  （共 191 筆，以上為部分型號）
 
 ### TPC
-  - TCJ-W05110：0.5X一眼兩視野,交期4~6週
-  - TCJ-W05110：0.5X一眼兩視野,交期4~6週
-  - TCP2-40：1/2型
-  - TJCP-HMS-W：MIRROR 1個月
-  - TJCP-HMS-W：MIRROR 2.5個月
-  - TJCP-HMS-W：MIRROR 3個月
+  - TCJ-W05110
+  - TCJ-W05110
+  - TCP2-40
+  - TJCP-HMS-W
+  - TJCP-HMS-W
+  - TJCP-HMS-W
+  - TJCP-HMS-W
+  - TJCP-HMS-W
+  - TJCP-HMS-W
+  - TPC018-HMS200-VIE-FIL
+  - TPC01MN-383
+  - TPC023-HMS200-VIE-FIL
+  - TPC02MN-203
+  - TPC02MN-266
+  - TPC02MN-436
+  - TPC02MN-436
+  - TPC037MN-260
+  - TPC037MN-260
+  - TPC03-HMS160D-VIE-FIL
+  - TPC03-HMS160D-VIE-FIL
+  - TPC03-HMS160D-VIE-FIL
+  - TPC03-HMS160-VIE-FIL
+  - TPC03-HMS160-VIE-FIL
+  - TPC03MN-143
+  - TPC03MN-143
+  - TPC03MN-187
+  - TPC03MN-187
+  - TPC03MN-308
+  - TPC03MN-308
+  - TPC03-MS110-5M
+  （共 192 筆，以上為部分型號）
 
 ### TUSS
-  - EX-20K：
-  - KV0614SS：
-  - KV0814M2：
-  - KV0814M2：
-  - KV0814M2：FOR ASE
-  - KV1214M2：
+  - EX-20K
+  - KV0614SS
+  - KV0814M2
+  - KV0814M2
+  - KV0814M2
+  - KV1214M2
+  - KV1614M2
+  - KV2514SS
+  - KV3520SS
+  - KV5028SS
+  - LYM0618
+  - LYM0814
+  - LYM1214
+  - LYM1614
+  - LYM2514
+  - LYM3514
+  - LYM5014
+  - SWIR0618
+  - SWIR0814
+  - SWIR1214
+  - SWIR1614
+  - SWIR2514
+  - SWIR3514
+  - T3-0918
+  - T3-1220
+  - T3-1618
+  - T3-2518
+  - T3-3518
+  - T3-7524
+  - T5-0814
+  （共 46 筆，以上為部分型號）
 
 ### TUSS美金
-  - EX-20K：
-  - KV0614SS：
-  - KV0814M2：
-  - KV0814M2：
-  - KV0814M2：FOR ASE
-  - KV1214M2：
+  - EX-20K
+  - KV0614SS
+  - KV0814M2
+  - KV0814M2
+  - KV0814M2
+  - KV1214M2
+  - KV1614M2
+  - KV2514SS
+  - KV3520SS
+  - KV5028SS
+  - LYM0618
+  - LYM0814
+  - LYM1214
+  - LYM1614
+  - LYM2514
+  - LYM3514
+  - LYM5014
+  - SWIR0618
+  - SWIR0814
+  - SWIR1214
+  - SWIR1614
+  - SWIR2514
+  - SWIR3514
+  - T3-0918
+  - T3-1220
+  - T3-1618
+  - T3-2518
+  - T3-3518
+  - T3-7524
+  - T5-0814
+  （共 58 筆，以上為部分型號）
 
 ### VS for業務
-  - Page：型號
+  - Page
 
 ### ZEISS
-  - ZEISS Dimension：
-  - Dimension 2.8/8 C：C-Mount
-  - Dimension 2/12 C：C-Mount
-  - Dimension 2/18 C：C-Mount
-  - Dimension 2/25 C：C-Mount
-  - Dimension 2/35 C：C-Mount
+  - ZEISS Dimension
+  - Dimension 2.8/8 C
+  - Dimension 2/12 C
+  - Dimension 2/18 C
+  - Dimension 2/25 C
+  - Dimension 2/35 C
+  - Dimension 2/50 C
+  - ZEISS Interlock
+  - Interlock 2.8/15 ZF.2
+  - Interlock 2.8/18 ZF.2
+  - Interlock 2.8/21 ZF.2
+  - Interlock 1.4/25 ZF.2
+  - Interlock 1.4/35 ZF.2
+  - Interlock 2/35 ZF.2
+  - Interlock 1.4/50 ZF.2
+  - Interlock 2/50 ZF.2
+  - Interlock 1.4/85 ZF.2
+  - Interlock 2/100 ZF.2
+  - Interlock 2/135 ZF.2
+  - Interlock 2.8/15 M42
+  - Interlock 2.8/18 M42
+  - Interlock 2.8/21 M42
+  - Interlock 1.4/25 M42
+  - Interlock 1.4/35 M42
+  - Interlock 2/35 M42
+  - Interlock 1.4/50 M42
+  - Interlock 2/50 M42
+  - Interlock 1.4/85 M42
+  - Interlock 2/100 M42
+  - Interlock 2/135 M42
+  （共 114 筆，以上為部分型號）
 
 ### Wavelength Opto
-  - TSL-9.4-50-75Z-D14：
+  - TSL-9.4-50-75Z-D14
 
 ### ZEISS(NT)
-  - ZEISS Dimension：
-  - Dimension 2.8/8 C：C-Mount
-  - Dimension 2/12 C：C-Mount
-  - Dimension 2/18 C：C-Mount
-  - Dimension 2/25 C：C-Mount
-  - Dimension 2/35 C：C-Mount
+  - ZEISS Dimension
+  - Dimension 2.8/8 C
+  - Dimension 2/12 C
+  - Dimension 2/18 C
+  - Dimension 2/25 C
+  - Dimension 2/35 C
+  - Dimension 2/50 C
+  - ZEISS Interlock
+  - Interlock 2.8/15 ZF.2
+  - Interlock 2.8/18 ZF.2
+  - Interlock 2.8/21 ZF.2
+  - Interlock 1.4/25 ZF.2
+  - Interlock 1.4/35 ZF.2
+  - Interlock 2/35 ZF.2
+  - Interlock 1.4/50 ZF.2
+  - Interlock 2/50 ZF.2
+  - Interlock 1.4/85 ZF.2
+  - Interlock 2/100 ZF.2
+  - Interlock 2/135 ZF.2
+  - Interlock 2.8/15 M42
+  - Interlock 2.8/18 M42
+  - Interlock 2.8/21 M42
+  - Interlock 1.4/25 M42
+  - Interlock 1.4/35 M42
+  - Interlock 2/35 M42
+  - Interlock 1.4/50 M42
+  - Interlock 2/50 M42
+  - Interlock 1.4/85 M42
+  - Interlock 2/100 M42
+  - Interlock 2/135 M42
+  （共 109 筆，以上為部分型號）
 
 ### 山善
-  - 378-810-3：20X Mitutoyo Plan Apo SL InfinityCorrected Objecti
-  - 378-787-4：5X Mitutoyo Plan APO HR InfinityCorrected Objectiv
-  - 378-803-3：10X Mitutoyo Plan APO InfinityCorrected Long WD Ob
-  - 378-834-7：Mitutoyo BD Plan Apo 20X
-  - 378-848-3：Mitutoyo G Plan APO 50X
-  - 378-805-3：Mitutoyo M Plan Apo 50x
+  - 378-810-3
+  - 378-787-4
+  - 378-803-3
+  - 378-834-7
+  - 378-848-3
+  - 378-805-3
+  - 378-814-4
+  - 378-815-4
+  - 378-505
+  - 378-804-3
+  - 378-788-4
 
 ### 浩藍
-  - AZURE-0307XTHM：
-  - AZURE-0412ZM：
-  - AZURE-0814MM：
-  - AZURE-0918M3M：
-  - AZURE-1040Z3M：
-  - AZURE-1060ZM：
+  - AZURE-0307XTHM
+  - AZURE-0412ZM
+  - AZURE-0814MM
+  - AZURE-0918M3M
+  - AZURE-1040Z3M
+  - AZURE-1060ZM
+  - AZURE-1218M3M
+  - AZURE-5020MF
+  - AZURE-ADVF9
+  - AZURE-BP465
+  - AZURE-BP465-M30.5*0.5
+  - AZURE-BP465-M37
+  - AZURE-BP525-M37
+  - AZURE-BP530
+  - AZURE-BP590
+  - AZURE-BP590-M37
+  - AZURE-BP635
+  - AZURE-BP635-M46
+  - AZURE-BP660
+  - AZURE-BP735-M43*0.75
+  - AZURE-BP735-M46*0.75
+  - AZURE-ELS-80/4.0
+  - AZURE-IR02812ZD
+  - AZURE-LP920 M37.5x0.5
+  - AZURE-MC27-1
+  - AZURE-MC305-1
+  - AZURE-PE4.0C
+  - AZURE-PLL-M35.5*0.5
+  - AZURE-PLL-M37*0.75
+  - FND02-M35.5*0.5
+  （共 36 筆，以上為部分型號）
 
 ### 普密斯
-  - PMS-1ST200-C：
-  - PMS-DTC23100-A：
-  - PMS-DTC23100-C：
-  - PMS-LZME-0510M：
-  - PMS-MC1-80：
-  - PMS-MC03-185：
+  - PMS-1ST200-C
+  - PMS-DTC23100-A
+  - PMS-DTC23100-C
+  - PMS-LZME-0510M
+  - PMS-MC1-80
+  - PMS-MC03-185
+  - PMS-03HT-110
+  - PMS-TCM1-110
+  - PMS-TCM05-150
+  - PMS-TCM05-150CO
+  - PMS-MC05-130
+  - PMS-Z65-LA0.25
+  - PMS-Z65-LA0.5
+  - PMS-Z65C-C
+  - PMS-Z65D
+  - PMS-Z65D
+  - PMS-Z125D
+  - PMS-Z65M-H12M
+  - PMS-AT1.0
 
 ### 視清
-  - Mega Object Telecentric Lens: WWH Series：
-  - WWH65A：
-  - WWH03-65ATV3：
-  - WWH05-65AT：
-  - WWH08-65AT：Φ26x89.7
-  - WWH10-65AT：Φ26x79.9
+  - Mega Object Telecentric Lens: WWH Series
+  - WWH65A
+  - WWH03-65ATV3
+  - WWH05-65AT
+  - WWH08-65AT
+  - WWH10-65AT
+  - WWH10-65AT-D60
+  - WWH15-65AT
+  - WWH20-65AT
+  - WWH30-65AT
+  - WWH40-65AT
+  - WWH60-65AT
+  - WWHA
+  - WWH03-110AT
+  - WWH03-110AT-120V2
+  - WWH05-110AT
+  - WWH05-110AT
+  - WWH05-180AT
+  - WWH07-150AT
+  - WWH08-110AT
+  - WWH10-110AT
+  - WWH125-96AT
+  - WWH15-85AT
+  - WWH15-110AT
+  - WWH15-135AT
+  - WWH20-110AT
+  - WWH20-135AT
+  - WWH20-150AT
+  - WWH30-110AT
+  - WWH40-110AT
+  （共 355 筆，以上為部分型號）
 
 ### schneider LENS Selection
-  - Detail：貼上型號
-  - 16K 當 12K：
+  - Detail
+  - 16K 當 12K
+  - S主鏡
 
 ### 登順(Schneider配件)他牌鏡頭
-  - 1001041A：802019A
-  - 1011634A：902021A
-  - 1018385A：903032A
-  - 1054532A：802020A
-  - 1054733A：904035A
-  - 1062892A：904029A
+  - 原型號
+  - 1001041A
+  - 1011634A
+  - 1018385A
+  - 1054532A
+  - 1054733A
+  - 1062892A
+  - 1062893A
+  - 1062894A
+  - 1072419A
+  - 1072420A
+  - 1072421A
+  - 1072421A
+  - 1075304A
+  - 1075556A
+  - 1077013A
+  - 1077293A
+  - 1079515A
+  - 1084875A
+  - 1084876A
+  - 1084877A
+  - 1084878A
+  - 1084879A
+  - 13020A
+  - 13050A
+  - 13051A
+  - 13052A
+  - 13052A
+  - 20054A
+  - 20059A
+  （共 357 筆，以上為部分型號）
 
 ### 德鴻(積吉)
-  - WTL110-20X20：
-  - 1-10M0820：
-  - DH110-05F40：
-  - DH110-08F34：
-  - DH110-03F50-S5：
-  - DH110-03FH：
+  - WTL110-20X20
+  - 1-10M0820
+  - DH110-05F40
+  - DH110-08F34
+  - DH110-03F50-S5
+  - DH110-03FH
+  - DH110-03THK
+  - DH110-05F40
+  - DH110-05F40-S3
+  - DH110-05FH
+  - DH110-05FHRK
+  - DH110-05T1626
+  - DH110-05T40
+  - DH110-05TH
+  - DH110-08F23HR
+  - DH110-08F34
+  - DH110-08T34
+  - DH110-15F28X
+  - DH110-15T23HR
+  - DH110-15T28X
+  - DH110-1F23HR-S1.5
+  - DH110-1F28X
+  - DH110-1F32X
+  - DH110-1T16X
+  - DH110-2F26K
+  - DH110-2F28X
+  - DH110-2T23HR
+  - DH110-2T28X
+  - DH110-3F16X
+  - DH110-4T23HR
+  （共 196 筆，以上為部分型號）
 
 ### 桂林方天
-  - FB20-180T：2X遠心鏡頭 WD=180
+  - FB20-180T
 
 ### 其他國內鏡頭廠商
-  - MML1-ST40D：1X同軸鏡頭(WD.40mm)
-  - MV5095C：1" 50mm/F0.95鏡頭
-  - MV2595C：25mm/F0.96鏡頭
-  - RY-HR-2X-110D：2X內同軸鏡頭(WD:110mm)
-  - MI-0816-5M：2/3" 8mm F1.6 5百萬畫素鏡頭
-  - MML08-HR110D：0.8X高解析同軸鏡頭(WD:110mm)
+  - MML1-ST40D
+  - MV5095C
+  - MV2595C
+  - RY-HR-2X-110D
+  - MI-0816-5M
+  - MML08-HR110D
+  - MML08-ST170D
+  - MML1-ST150D
+  - MML08-ST110D
+  - M Plan Apo 100X
+  - VS-TCH08-110
+  - VS-TCH2-110
+  - VS-TCH2-65CO
+  - VS-TCH4-65CO
+  - VS-TCM017-110
+  - VS-THV1-110/S
+  - VS-THV1.5-110/S
+  - VS-THV0.5-110/S
+  - SV-10028H
+  - SV-1214H
+  - SV-3514H
+  - SV-3518V
+  - VS-0618H1
+  - VS-1620HV
+  - SV-5014H
+  - VS-LLD25
+  - VS-HM305
+  - VS-LDA20
+  - VS-LDA75
+  - VS-LDV25
+  （共 49 筆，以上為部分型號）
 
-## 其他產品 & 軟體
+## Eva 回覆規則
 
-- **讀碼器**：Dataman（Cognex）、RDV 等品牌
-- **影像擷取卡**：Bitflow、EPIX、Intercon1
-- **AI 視覺軟體**：Neurocle（深度學習）、mViz
-- **電源供應器**：台達電（台達 Power supply）
-- **光纖傳輸**：LAK
-
-## Eva 回覆原則
-
-- 客戶問「有沒有 X 品牌/型號」→ 根據以上清單判斷，有就確認，沒有就說超出目前代理範圍
-- 客戶問具體報價、折扣、交期、庫存 → [CONFIDENCE: LOW]，轉 Peggy 確認
-- 客戶問應用場景建議（如 AOI、PCB 檢測、食品篩選等）→ 根據產品知識建議，[CONFIDENCE: HIGH]
-- 客戶問技術規格（解析度、fps、sensor size 等）→ 如有明確資料就答，不確定就 LOW
+- 客戶問「有沒有代理 X 品牌」→ 查上方清單，有就回「有代理」，沒有就回「目前未代理」
+- 客戶問「有沒有 X 型號」→ 查上方清單，有就確認，沒有或不確定就 [CONFIDENCE: LOW]
+- 任何報價、折扣、價格相關問題 → 一律 [CONFIDENCE: LOW]，轉 Peggy 確認
+- 交期、庫存、客製規格 → 一律 [CONFIDENCE: LOW]，轉 Peggy 確認
+- 應用場景建議（AOI、外觀檢測、尺寸量測等）→ 根據品牌知識建議，[CONFIDENCE: HIGH]
