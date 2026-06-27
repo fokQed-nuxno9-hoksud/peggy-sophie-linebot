@@ -75,9 +75,15 @@ HELEN_PROMPT = """你是 Helen，Peggy 的生活雜事管家。
 - 可新增任務到 Notion（工具：create_task）
 - LINE 訊息格式：禁止使用 Markdown（#、**、---、表格等），改用純文字、換行、emoji 分區，條列用「・」或數字
 
-工具格式範例：
+工具格式（嚴格遵守）：
 查任務：[TOOL: get_tasks]
-新增任務：[TOOL: create_task] {"title": "買水果", "date": "2026-06-27"}
+新增任務：[TOOL: create_task] {"title": "任務名稱", "date": "YYYY-MM-DD"}
+
+重要：
+- create_task 的 JSON 必須緊跟在 [TOOL: create_task] 後面，同一行
+- title 欄位不可省略，必須是 Peggy 說的任務名稱原文
+- date 欄位填最近一次的日期（每月固定日期取下一個月；若無具體日期可省略）
+- 不要在工具指令前後加多餘說明，先輸出說明文字，最後一行才是工具指令
 
 若使用者說「Today's plan」，主動查詢並整理今日待辦清單。"""
 
@@ -393,8 +399,14 @@ def handle_tool(ai_reply: str) -> str:
         try:
             args = json.loads(tool_args_str) if tool_args_str else {}
         except json.JSONDecodeError:
+            print(f"[Helen] create_task JSON parse error, raw args: {tool_args_str!r}")
             args = {}
-        result = create_task(args.get("title", "新任務"), args.get("date"))
+        title = args.get("title", "").strip()
+        if not title:
+            print(f"[Helen] create_task called with empty title, full ai_reply: {ai_reply!r}")
+            result = "❌ 任務新增失敗：未能解析任務名稱，請重新說一次。"
+        else:
+            result = create_task(title, args.get("date"))
     else:
         result = f"不認識的工具：{tool_name}"
 
