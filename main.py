@@ -293,7 +293,7 @@ def get_tasks() -> str:
 
 def create_task(title: str, date: str = None) -> str:
     props = {
-        "Name": {"title": [{"text": {"content": title}}]},
+        "Task": {"title": [{"text": {"content": title}}]},
         "Inbox (To Do Dump)": {"checkbox": True},
     }
     if date:
