@@ -527,7 +527,10 @@ def eva_webhook():
         reply_token = event["replyToken"]
         customer_id = event.get("source", {}).get("userId", "unknown")
 
-        ai_reply = call_claude(EVA_PROMPT_FULL, user_text, customer_facing=True)
+        taipei = ZoneInfo("Asia/Taipei")
+        today_str = datetime.now(taipei).strftime("%Y-%m-%d")
+        eva_prompt_with_date = f"今天日期：{today_str}（台北時間）\n\n" + EVA_PROMPT_FULL
+        ai_reply = call_claude(eva_prompt_with_date, user_text, customer_facing=True)
 
         # 解析 confidence
         confidence = "LOW"
