@@ -449,7 +449,9 @@ def webhook():
             continue
 
         # 一般 AI 回應
-        system_prompt = AGENT_PROMPTS[agent]
+        taipei = ZoneInfo("Asia/Taipei")
+        today_str = datetime.now(taipei).strftime("%Y-%m-%d")
+        system_prompt = f"今天日期：{today_str}（台北時間）\n\n" + AGENT_PROMPTS[agent]
         agent_name = AGENT_NAMES[agent]
         ai_reply = call_claude(system_prompt, user_text)
         final_reply = handle_tool(ai_reply)
