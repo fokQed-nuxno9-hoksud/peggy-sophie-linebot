@@ -21,7 +21,7 @@ NOTION_TOKEN = os.environ["NOTION_TOKEN"]
 NOTION_TASKS_DB_ID = os.environ["NOTION_TASKS_DB_ID"]
 LINE_USER_ID = os.environ.get("LINE_USER_ID", "")
 
-# Eva — JIDIN_Peggy LINE OA
+# Eva — JIDIEN_Peggy LINE OA
 EVA_LINE_CHANNEL_SECRET = os.environ.get("EVA_LINE_CHANNEL_SECRET", "")
 EVA_LINE_CHANNEL_ACCESS_TOKEN = os.environ.get("EVA_LINE_CHANNEL_ACCESS_TOKEN", "")
 
@@ -92,7 +92,7 @@ AGENT_PROMPTS = {"sophie": SOPHIE_PROMPT, "lisa": LISA_PROMPT, "helen": HELEN_PR
 AGENT_NAMES = {"sophie": "Sophie", "lisa": "Lisa", "helen": "Helen"}
 
 # ── Eva system prompt ────────────────────────────────────────────
-EVA_PROMPT = """你是 Eva，JIDIN_Peggy LINE 官方帳號的 AI 客服助理，代表業務工程師 Peggy（王冠懿）在 LINE 上回覆客戶詢問。
+EVA_PROMPT = """你是 Eva，JIDIEN_Peggy LINE 官方帳號的 AI 客服助理，代表業務工程師 Peggy（王冠懿）在 LINE 上回覆客戶詢問。
 
 【公司背景】
 JIDIEN 碁電（www.jidien.com）是台灣機器視覺整合商，代理並銷售：
@@ -124,7 +124,7 @@ E. 品牌特色說明：介紹我們代理品牌的優勢與適用場景
    ✅ 「有代理 XXX 嗎？」→ 查知識庫，直接回答有/沒有，[CONFIDENCE: HIGH]
    ✅ 技術問題、應用推薦、選型計算 → [CONFIDENCE: HIGH]
 6. 超出知識範圍、不確定的技術細節 → [CONFIDENCE: LOW]
-7. 若客戶問「你是 AI 嗎？」→ 誠實回答「我是 JIDIN_Peggy 的 AI 助理 Eva，有技術問題我會盡力協助，需要時轉給業務同仁確認。」[CONFIDENCE: HIGH]
+7. 若客戶問「你是 AI 嗎？」→ 誠實回答「我是 JIDIEN_Peggy 的 AI 助理 Eva，有技術問題我會盡力協助，需要時轉給業務同仁確認。」[CONFIDENCE: HIGH]
 8. 保持完全政治中立，政治/宗教/社會爭議問題 → 「這個問題超出我的服務範圍」[CONFIDENCE: HIGH]
 9. 不偽裝成真人
 
@@ -461,7 +461,7 @@ def eva_push_line(user_id: str, text: str):
 def notify_peggy_for_review(customer_id: str, customer_msg: str, draft: str):
     """推播給 Peggy，提醒她親自回覆客戶的敏感問題。"""
     notice = (
-        f"【JIDIN_Peggy OA 客戶詢問】\n"
+        f"【JIDIEN_Peggy OA 客戶詢問】\n"
         f"客戶訊息：{customer_msg}\n\n"
         f"⚠️ 此問題涉及價格／庫存／交期，請你親自回覆。\n"
         f"→ 請至 LINE OA 後台回覆（客戶 ID：{customer_id}）"

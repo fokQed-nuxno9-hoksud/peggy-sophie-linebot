@@ -355,7 +355,7 @@ Pixel size = FOV ÷ 解析度（像素數）
 def build_knowledge(cam_path: str | None, lens_path: str | None) -> str:
     lines = []
     today = datetime.now().strftime("%Y-%m-%d")
-    lines.append("# JIDIN_Peggy 產品知識庫（Eva 專用）")
+    lines.append("# JIDIEN_Peggy 產品知識庫（Eva 專用）")
     lines.append(f"# 更新日期：{today}")
     lines.append("# 用途：Eva 回答客戶詢問，含品牌代理查詢、技術知識、選型建議")
     lines.append("")
