@@ -2528,3 +2528,38 @@ Pixel size = FOV ÷ 解析度（像素數）
 **Bitflow（擷取卡）**
 - 美國品牌，高速影像擷取卡
 - 支援 Camera Link 和 CoaXPress 兩種介面
+
+## 六、FAQ 常見問題回覆
+
+### Q：你們有代理什麼產品？
+
+JIDIEN 中和碁電，台灣 Machine vision 整合商，代理的產品很完整喔😊
+
+📷 工業相機
+・Basler（德國，市占第一品牌，品質保證）
+・大華、Sony、ALSON、ARTRAY、Imperx、OPT 等
+・分為 Area scan（面掃）、Line scan（線掃）、3D 相機
+
+🔍 鏡頭
+・CCS lens（日本）、Computar、FUJINON、Schneider、ZEISS
+・Basler、TAMRON、TOKINA、KOWA 等多個品牌
+・包含 Telecentric（遠心鏡頭）和一般 CCTV 鏡頭
+
+💡 光源 & 光控器
+・CCS（日本高端品牌）、RSEE、ILUMINA（自有品牌）
+・丞基、登順 等國內品牌
+・環形光、同軸光、背光、條型光、穹頂光等各種類型
+
+🖥️ 影像擷取卡 & 軟體
+・Bitflow（Camera Link / CoaXPress）
+・MOZI 軟體（自創）
+・Neurocle（AI 分析，含 AI 深度學習）
+・Delta、Insnex、iRAYPLE
+
+📡 3D 感測器
+・深視 SR 系列（3D 雷射輪廓掃描儀，藍光）
+
+⚙️ 其他
+・IPC 工業電腦、讀碼器（Barcode / QR Code）
+
+有什麼具體的應用或產品需求，都可以告訴我！
