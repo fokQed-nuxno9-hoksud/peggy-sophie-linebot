@@ -31,9 +31,10 @@ INDEX_NAMES = {'^DJI': 'Dow Jones', '^GSPC': 'S&P 500', '^IXIC': 'Nasdaq'}
 # ── 數據抓取 ─────────────────────────────────────────────────────────────────
 
 def fetch_json(url, headers=None):
-    req = urllib.request.Request(url, headers=headers or {'User-Agent': 'Mozilla/5.0'})
-    with urllib.request.urlopen(req, timeout=20) as r:
-        return json.loads(r.read())
+    resp = requests.get(url, headers=headers or {'User-Agent': 'Mozilla/5.0'},
+                        timeout=20, verify=False)
+    resp.raise_for_status()
+    return resp.json()
 
 
 def get_twse_index():
