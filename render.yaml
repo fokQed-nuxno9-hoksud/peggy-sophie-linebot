@@ -49,11 +49,40 @@ services:
         sync: false
 
   - type: cron
+    name: sophie-morning-brief
+    runtime: python
+    schedule: "30 0 * * *"
+    buildCommand: pip install -r requirements.txt
+    startCommand: python sophie_morning_brief.py
+    envVars:
+      - key: GMAIL_CLIENT_ID
+        sync: false
+      - key: GMAIL_CLIENT_SECRET
+        sync: false
+      - key: SHEETS_REFRESH_TOKEN
+        sync: false
+      - key: ANTHROPIC_API_KEY
+        sync: false
+      - key: LINE_CHANNEL_ACCESS_TOKEN
+        sync: false
+      - key: LINE_USER_ID
+        sync: false
+
+  - type: cron
     name: helen-morning-brief
     runtime: python
     schedule: "30 0 * * *"
     buildCommand: pip install -r requirements.txt
     startCommand: python helen_morning_brief.py
+    envVars:
+      - key: NOTION_TOKEN
+        sync: false
+      - key: NOTION_TASKS_DB_ID
+        sync: false
+      - key: LINE_CHANNEL_ACCESS_TOKEN
+        sync: false
+      - key: LINE_USER_ID
+        sync: false
     envVars:
       - key: GMAIL_CLIENT_ID
         sync: false
