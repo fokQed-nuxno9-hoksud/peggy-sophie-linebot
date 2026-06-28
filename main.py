@@ -407,6 +407,25 @@ def format_helen_daily(data: dict) -> str:
     lines.append("有什麼需要幫忙的隨時說 💪")
     return "\n".join(lines)
 
+# ── Markdown stripper ────────────────────────────────────────────
+
+def strip_markdown(text: str) -> str:
+    """Remove Markdown syntax before sending to LINE (which renders it as plain text)."""
+    # Bold / italic: **text** → text, *text* → text
+    text = re.sub(r'\*\*(.+?)\*\*', r'\1', text, flags=re.DOTALL)
+    text = re.sub(r'\*(.+?)\*', r'\1', text, flags=re.DOTALL)
+    # Headers: ## Title → Title
+    text = re.sub(r'^#{1,6}\s*', '', text, flags=re.MULTILINE)
+    # Horizontal rules: --- or ===
+    text = re.sub(r'^[-=]{3,}\s*$', '', text, flags=re.MULTILINE)
+    # Table rows: | col | col | → remove entire line
+    text = re.sub(r'^\|.+\|$', '', text, flags=re.MULTILINE)
+    # Backtick code: `text` → text
+    text = re.sub(r'`(.+?)`', r'\1', text)
+    # Collapse 3+ consecutive blank lines into 2
+    text = re.sub(r'\n{3,}', '\n\n', text)
+    return text.strip()
+
 # ── LINE helpers ──────────────────────────────────────────────────
 
 def verify_signature(body: bytes, signature: str) -> bool:
@@ -545,7 +564,7 @@ def webhook():
         agent_name = AGENT_NAMES[agent]
         ai_reply = call_claude(system_prompt, user_text)
         final_reply = handle_tool(ai_reply)
-        reply_line(reply_token, f"[{agent_name}]\n{final_reply}")
+        reply_line(reply_token, f"[{agent_name}]\n{strip_markdown(final_reply)}")
 
     return "OK"
 
@@ -629,7 +648,7 @@ def eva_webhook():
         clean_reply = ai_reply.replace("[CONFIDENCE: HIGH]", "").replace("[CONFIDENCE: LOW]", "").strip()
 
         if confidence == "HIGH":
-            eva_reply_line(reply_token, clean_reply)
+            eva_reply_line(reply_token, strip_markdown(clean_reply))
         else:
             # 草稿模式：先回覆客戶「稍候」，再通知 Peggy
             eva_reply_line(reply_token, "感謝您的詢問！我們收到您的問題，業務同仁將盡快為您確認並回覆。")
