@@ -17,6 +17,26 @@ import requests
 
 TAIPEI = timezone(timedelta(hours=8))
 
+# 台灣國定假日（固定節日，農曆節日只列出常見固定對應）
+# 補充：Render Cron 每天跑，遇假日直接 exit，不推播
+TW_FIXED_HOLIDAYS = {
+    (1, 1),   # 元旦
+    (2, 28),  # 和平紀念日
+    (4, 4),   # 兒童節
+    (4, 5),   # 清明節（固定）
+    (5, 1),   # 勞動節
+    (6, 10),  # 端午節（農曆五月五，此行每年需手動更新）
+    (9, 3),   # 軍人節
+    (10, 10), # 國慶日
+    (12, 25), # 行憲紀念日
+}
+
+def is_taiwan_holiday(dt: datetime) -> bool:
+    """週六週日或國定假日回傳 True，農曆假日請手動更新 TW_FIXED_HOLIDAYS。"""
+    if dt.weekday() >= 5:  # 0=Mon … 6=Sun，5=Sat, 6=Sun
+        return True
+    return (dt.month, dt.day) in TW_FIXED_HOLIDAYS
+
 SPREADSHEET_ID = "14GLya7CgPe9TfEuNx2L30LAznzcFtiGSvU8gHPcOqd4"
 SHEET_NAME = "To Do list"
 TOKEN_URL = "https://oauth2.googleapis.com/token"
@@ -184,6 +204,10 @@ def push_line(text: str) -> None:
 def main():
     now = datetime.now(TAIPEI)
     print(f"[Helen] {now.strftime('%Y-%m-%d %H:%M')} 台北時間 開始執行", flush=True)
+
+    if is_taiwan_holiday(now):
+        print(f"[Helen] 今天是假日（{now.strftime('%Y-%m-%d %a')}），跳過推播。", flush=True)
+        return
 
     print("讀取 Google Sheets...", flush=True)
     access_token = get_sheets_access_token()
