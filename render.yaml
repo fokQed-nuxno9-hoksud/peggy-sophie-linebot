@@ -47,3 +47,23 @@ services:
         sync: false
       - key: LINE_USER_ID
         sync: false
+
+  - type: cron
+    name: helen-morning-brief
+    runtime: python
+    schedule: "30 0 * * *"
+    buildCommand: pip install -r line_bot/requirements.txt
+    startCommand: python line_bot/helen_morning_brief.py
+    envVars:
+      - key: GMAIL_CLIENT_ID
+        sync: false
+      - key: GMAIL_CLIENT_SECRET
+        sync: false
+      - key: SHEETS_REFRESH_TOKEN
+        sync: false
+      - key: ANTHROPIC_API_KEY
+        sync: false
+      - key: LINE_CHANNEL_ACCESS_TOKEN
+        sync: false
+      - key: LINE_USER_ID
+        sync: false
