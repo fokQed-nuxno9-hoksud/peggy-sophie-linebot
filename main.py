@@ -91,12 +91,16 @@ HELEN_PROMPT = """你是 Helen，Peggy 的生活雜事管家。
 
 def detect_agent(message: str) -> str:
     msg = message.lower()
+    # Explicit agent name takes priority over keyword detection
+    if "helen" in msg or "today's plan" in msg or "today plan" in msg:
+        return "helen"
+    if "lisa" in msg:
+        return "lisa"
     if "sophie" in msg or "to do list" in msg:
         return "sophie"
-    elif "lisa" in msg or any(w in msg for w in ["股票", "美股", "台股", "財經", "nvda", "tsla", "etf", "fed", "漲跌"]):
+    # Keyword-based fallback (no explicit agent named)
+    if any(w in msg for w in ["股票", "美股", "台股", "財經", "nvda", "tsla", "etf", "fed", "漲跌"]):
         return "lisa"
-    elif "helen" in msg or "today's plan" in msg or "today plan" in msg:
-        return "helen"
     return "sophie"
 
 AGENT_PROMPTS = {"sophie": SOPHIE_PROMPT, "lisa": LISA_PROMPT, "helen": HELEN_PROMPT}
