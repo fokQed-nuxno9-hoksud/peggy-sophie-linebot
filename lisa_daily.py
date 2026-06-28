@@ -408,7 +408,7 @@ def main():
 
     print('Pushing to LINE...')
     line_msg = make_line_summary(data)
-    send_line(line_msg)
+    send_line(f"[Lisa]\n{line_msg}")
     print('  ✓ LINE pushed')
 
     print(f'[{now_str}] Done.')
