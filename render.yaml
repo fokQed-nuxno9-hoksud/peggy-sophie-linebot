@@ -17,6 +17,14 @@ services:
         sync: false
       - key: LINE_USER_ID
         sync: false
+      - key: GMAIL_CLIENT_ID
+        sync: false
+      - key: GMAIL_CLIENT_SECRET
+        sync: false
+      - key: GMAIL_WANG_REFRESH_TOKEN
+        sync: false
+      - key: GMAIL_EVENT_REFRESH_TOKEN
+        sync: false
       - key: EVA_LINE_CHANNEL_SECRET
         sync: false
       - key: EVA_LINE_CHANNEL_ACCESS_TOKEN
