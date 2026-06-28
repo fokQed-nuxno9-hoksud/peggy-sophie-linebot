@@ -27,11 +27,11 @@ mkdir -p "$LOGDIR"
     exit 1
   fi
 
-  # 2. 有變動才 commit + push
-  if git diff --quiet eva_knowledge.txt; then
-    echo "ℹ️ 知識庫無變動，略過 commit / push"
+  # 2. 有變動才 commit + push（知識庫 + 完整型號索引）
+  if git diff --quiet eva_knowledge.txt eva_models_index.txt; then
+    echo "ℹ️ 知識庫與型號索引皆無變動，略過 commit / push"
   else
-    git add eva_knowledge.txt
+    git add eva_knowledge.txt eva_models_index.txt
     git commit -m "chore: Eva 知識庫每週自動更新 $(date '+%Y-%m-%d')"
     if git push origin main; then
       echo "✅ 已 push 更新"

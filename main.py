@@ -174,6 +174,37 @@ def _load_eva_knowledge() -> str:
 EVA_KNOWLEDGE = _load_eva_knowledge()
 EVA_PROMPT_FULL = EVA_PROMPT.replace("{knowledge}", EVA_KNOWLEDGE)
 
+
+# ── Eva 完整型號索引（按需查詢，不進每則 prompt）────────────────────
+def _load_eva_models_index() -> list:
+    idx_path = os.path.join(os.path.dirname(__file__), "eva_models_index.txt")
+    try:
+        with open(idx_path, encoding="utf-8") as f:
+            return [ln.strip() for ln in f if "|" in ln and not ln.startswith("#")]
+    except Exception:
+        return []
+
+EVA_MODELS_INDEX = _load_eva_models_index()
+
+
+def search_eva_models(user_text: str, limit: int = 25) -> list:
+    """從使用者訊息抽出像型號的 token（含數字、長度≥3），到完整索引查相符型號。"""
+    tokens = re.findall(r"[A-Za-z0-9][A-Za-z0-9\-/]{2,}", user_text)
+    tokens = [t.lower() for t in tokens if any(c.isdigit() for c in t)]
+    if not tokens:
+        return []
+    matches = []
+    seen = set()
+    for line in EVA_MODELS_INDEX:
+        low = line.lower()
+        if any(t in low for t in tokens):
+            if line not in seen:
+                seen.add(line)
+                matches.append(line)
+                if len(matches) >= limit:
+                    break
+    return matches
+
 # ── Google Sheet ─────────────────────────────────────────────────
 
 def fetch_and_format_today(today_date: date) -> str:
@@ -677,6 +708,19 @@ def eva_webhook():
             "・其他語言 → 繁體中文\n"
         )
         eva_prompt_with_date = f"今天日期：{today_str}（台北時間）\n\n{eva_lang_rule}\n" + EVA_PROMPT_FULL
+
+        # 按需查詢：若客戶訊息含型號，從完整索引查相符型號，只把結果帶進這次回覆
+        model_hits = search_eva_models(user_text)
+        if model_hits:
+            print(f"[Eva] 型號查詢命中 {len(model_hits)} 筆")
+            hits_text = "\n".join(f"  - {m}" for m in model_hits)
+            eva_prompt_with_date += (
+                "\n\n【型號查詢結果（來自完整牌價索引，格式：品牌 | 型號）】\n"
+                f"{hits_text}\n"
+                "（以上是 JIDIEN 牌價索引中與客戶提到的型號相符的項目；"
+                "若有相符即表示我們有代理該品牌的這個型號，可據此回覆；"
+                "若清單為空或不確定，引導客戶至商城搜尋或由 Peggy 確認，不要直接斷言沒有。）"
+            )
         ai_reply = call_claude(eva_prompt_with_date, user_text, customer_facing=True)
 
         # 解析 confidence

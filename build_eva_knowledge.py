@@ -31,6 +31,7 @@ except ImportError:
 
 JID_PRICE_DIR = "/Users/user/Library/CloudStorage/GoogleDrive-s9220320@gmail.com/我的雲端硬碟/JID/牌價"
 OUTPUT_PATH = os.path.join(os.path.dirname(__file__), "eva_knowledge.txt")
+INDEX_PATH = os.path.join(os.path.dirname(__file__), "eva_models_index.txt")
 
 # ── 找最新牌價檔案 ────────────────────────────────────────────────
 
@@ -494,6 +495,30 @@ def build_knowledge(cam_path: str | None, lens_path: str | None) -> str:
 
     return "\n".join(lines)
 
+# ── 完整型號索引（按需查詢用，不進 prompt）────────────────────────────
+
+def build_models_index(cam_path: str | None, lens_path: str | None) -> tuple[str, int]:
+    """產出完整型號索引，每行「品牌 | 型號」。回傳 (內容, 型號總數)。"""
+    today = datetime.now().strftime("%Y-%m-%d")
+    lines = [
+        "# Eva 完整型號索引（按需查詢用，Eva 收到型號詢問時才查，不塞進每則 prompt）",
+        f"# 更新日期：{today}",
+        "# 格式：品牌 | 型號",
+        "",
+    ]
+    total = 0
+    sources = []
+    if cam_path:
+        sources.append(read_xls_brands_models(cam_path))
+    if lens_path:
+        sources.append(read_xlsx_brands_models(lens_path))
+    for brands_models in sources:
+        for brand, models in brands_models.items():
+            for m in models:
+                lines.append(f"{brand} | {m}")
+                total += 1
+    return "\n".join(lines), total
+
 # ── 主程式 ────────────────────────────────────────────────────────
 
 if __name__ == "__main__":
@@ -516,6 +541,15 @@ if __name__ == "__main__":
     size = len(content.encode("utf-8"))
     print(f"完成！eva_knowledge.txt 已更新（{lines_count} 行，{size/1024:.1f} KB）")
     print(f"路徑：{OUTPUT_PATH}")
+
+    # 產出完整型號索引（Eva 按需查詢用）
+    print("正在產生完整型號索引...")
+    index_content, total_models = build_models_index(cam_path, lens_path)
+    with open(INDEX_PATH, "w", encoding="utf-8") as f:
+        f.write(index_content)
+    idx_size = len(index_content.encode("utf-8"))
+    print(f"完成！eva_models_index.txt 已更新（{total_models} 個型號，{idx_size/1024:.1f} KB）")
+    print(f"路徑：{INDEX_PATH}")
     print()
     print("下一步：")
     print("  git add eva_knowledge.txt")
