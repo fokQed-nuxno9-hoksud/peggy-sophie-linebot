@@ -584,7 +584,14 @@ def webhook():
         # 一般 AI 回應
         taipei = ZoneInfo("Asia/Taipei")
         today_str = datetime.now(taipei).strftime("%Y-%m-%d")
-        system_prompt = f"今天日期：{today_str}（台北時間）\n\n" + AGENT_PROMPTS[agent]
+        lang_rule = (
+            "【最優先語言規則】務必用「使用者這則訊息的語言」回覆：\n"
+            "・中文訊息 → 繁體中文\n"
+            "・English message → reply in English\n"
+            "・日本語のメッセージ → 日本語で返信\n"
+            "・其他語言 → 繁體中文\n"
+        )
+        system_prompt = f"今天日期：{today_str}（台北時間）\n\n{lang_rule}\n" + AGENT_PROMPTS[agent]
         agent_name = AGENT_NAMES[agent]
         ai_reply = call_claude(system_prompt, user_text)
         final_reply = handle_tool(ai_reply)
