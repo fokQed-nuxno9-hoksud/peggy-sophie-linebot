@@ -317,6 +317,96 @@ def create_task(title: str, date: str = None) -> str:
         return f"已新增任務：「{title}」" + (f"（{date}）" if date else "")
     return f"新增失敗：{resp.text[:200]}"
 
+
+def helen_daily_query() -> dict:
+    """Query Notion for Helen's daily plan: today / yesterday undone / tomorrow / overdue."""
+    taipei = ZoneInfo("Asia/Taipei")
+    today = datetime.now(taipei).date()
+    yesterday = today - timedelta(days=1)
+    tomorrow = today + timedelta(days=1)
+
+    headers = {
+        "Authorization": f"Bearer {NOTION_TOKEN}",
+        "Notion-Version": "2022-06-28",
+        "Content-Type": "application/json",
+    }
+
+    def notion_query(filter_body):
+        resp = requests.post(
+            f"https://api.notion.com/v1/databases/{NOTION_TASKS_DB_ID}/query",
+            headers=headers,
+            json={"filter": filter_body, "sorts": [{"property": "Date", "direction": "ascending"}], "page_size": 30},
+        )
+        return resp.json().get("results", [])
+
+    def extract(r):
+        props = r.get("properties", {})
+        title_prop = props.get("Task") or props.get("Name") or {}
+        title_list = title_prop.get("title") or title_prop.get("rich_text") or []
+        title = "".join(t.get("plain_text", "") for t in title_list) or "（無標題）"
+        done = props.get("Done", {}).get("checkbox", False)
+        date_start = (props.get("Date", {}).get("date") or {}).get("start", "")
+        return title, done, date_start
+
+    today_tasks     = [extract(r) for r in notion_query({"property": "Date", "date": {"equals": str(today)}})]
+    yesterday_undone = [extract(r) for r in notion_query({"and": [
+        {"property": "Date", "date": {"equals": str(yesterday)}},
+        {"property": "Done", "checkbox": {"equals": False}},
+    ]})]
+    tomorrow_tasks  = [extract(r) for r in notion_query({"property": "Date", "date": {"equals": str(tomorrow)}})]
+    overdue         = [extract(r) for r in notion_query({"and": [
+        {"property": "Date", "date": {"before": str(yesterday)}},
+        {"property": "Done", "checkbox": {"equals": False}},
+    ]})]
+
+    return {
+        "today": today,
+        "today_tasks": today_tasks,
+        "yesterday_undone": yesterday_undone,
+        "tomorrow_tasks": tomorrow_tasks,
+        "overdue": overdue,
+    }
+
+
+def format_helen_daily(data: dict) -> str:
+    """Format Helen's daily plan as LINE plain-text message."""
+    weekdays = ["週一", "週二", "週三", "週四", "週五", "週六", "週日"]
+    today = data["today"]
+    wday = weekdays[today.weekday()]
+
+    lines = [f"早安 Peggy！今天是 {today.month}/{today.day}（{wday}）☀️", ""]
+
+    lines.append("📋 今日待辦")
+    if data["today_tasks"]:
+        for title, done, _ in data["today_tasks"]:
+            mark = "✅" if done else "・"
+            lines.append(f"{mark} {title}")
+    else:
+        lines.append("・今天沒有安排的任務")
+    lines.append("")
+
+    if data["yesterday_undone"]:
+        lines.append("⚠️ 昨日未完成")
+        for title, _, _ in data["yesterday_undone"]:
+            lines.append(f"・{title}")
+        lines.append("")
+
+    if data["tomorrow_tasks"]:
+        lines.append("📅 明日預計")
+        for title, done, _ in data["tomorrow_tasks"]:
+            mark = "✅" if done else "・"
+            lines.append(f"{mark} {title}")
+        lines.append("")
+
+    if data["overdue"]:
+        lines.append("🔔 注意事項（逾期未完成）")
+        for title, _, date_str in data["overdue"]:
+            lines.append(f"・{title}（{date_str}）")
+        lines.append("")
+
+    lines.append("有什麼需要幫忙的隨時說 💪")
+    return "\n".join(lines)
+
 # ── LINE helpers ──────────────────────────────────────────────────
 
 def verify_signature(body: bytes, signature: str) -> bool:
@@ -556,6 +646,18 @@ def push_lisa():
         return {"error": "缺少 user_id 或 message"}, 400
     push_line(target_id, message)
     return {"ok": True}
+
+
+@app.route("/push_helen_daily", methods=["POST", "GET"])
+def push_helen_daily():
+    try:
+        data = helen_daily_query()
+        message = format_helen_daily(data)
+        push_line(LINE_USER_ID, f"[Helen]\n{message}")
+        return {"ok": True, "date": str(data["today"])}
+    except Exception as e:
+        print(f"[Helen] daily push error: {e}")
+        return {"error": str(e)}, 500
 
 
 @app.route("/health")
