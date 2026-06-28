@@ -669,7 +669,14 @@ def eva_webhook():
 
         taipei = ZoneInfo("Asia/Taipei")
         today_str = datetime.now(taipei).strftime("%Y-%m-%d")
-        eva_prompt_with_date = f"今天日期：{today_str}（台北時間）\n\n" + EVA_PROMPT_FULL
+        eva_lang_rule = (
+            "【最優先語言規則】務必用「客戶這則訊息的語言」回覆，不管知識庫是什麼語言：\n"
+            "・中文訊息 → 繁體中文\n"
+            "・English message → reply in English\n"
+            "・日本語のメッセージ → 日本語で返信\n"
+            "・其他語言 → 繁體中文\n"
+        )
+        eva_prompt_with_date = f"今天日期：{today_str}（台北時間）\n\n{eva_lang_rule}\n" + EVA_PROMPT_FULL
         ai_reply = call_claude(eva_prompt_with_date, user_text, customer_facing=True)
 
         # 解析 confidence
