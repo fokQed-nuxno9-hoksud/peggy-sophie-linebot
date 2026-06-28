@@ -21,3 +21,29 @@ services:
         sync: false
       - key: EVA_LINE_CHANNEL_ACCESS_TOKEN
         sync: false
+
+  - type: cron
+    name: lisa-daily-report
+    runtime: python
+    schedule: "0 23 * * *"
+    buildCommand: pip install -r line_bot/requirements.txt
+    startCommand: python line_bot/lisa_daily.py
+    envVars:
+      - key: FINNHUB_TOKEN
+        sync: false
+      - key: GMAIL_CLIENT_ID
+        sync: false
+      - key: GMAIL_CLIENT_SECRET
+        sync: false
+      - key: GMAIL_REFRESH_TOKEN
+        sync: false
+      - key: GMAIL_ADDRESS
+        sync: false
+      - key: GMAIL_TO
+        sync: false
+      - key: ANTHROPIC_API_KEY
+        sync: false
+      - key: LINE_CHANNEL_ACCESS_TOKEN
+        sync: false
+      - key: LINE_USER_ID
+        sync: false
