@@ -80,8 +80,9 @@ def fetch_notion_data(today: date) -> dict:
 
 # ── Gmail（唯讀）────────────────────────────────────────────────────────────────
 
-# 只抓收件匣最近 1 天、排除「促銷／社交」分類的信（廣告、推播那類自動濾掉）
-GMAIL_QUERY = "in:inbox newer_than:1d -category:promotions -category:social"
+# 抓收件匣、排除「促銷／社交」分類的信（廣告、推播那類自動濾掉）
+def gmail_query(days: int = 1) -> str:
+    return f"in:inbox newer_than:{days}d -category:promotions -category:social"
 
 
 def gmail_access_token(refresh_token: str) -> str:
@@ -108,7 +109,7 @@ def _parse_sender(from_header: str) -> str:
     return from_header
 
 
-def fetch_gmail(refresh_token: str, max_results: int = 12) -> list:
+def fetch_gmail(refresh_token: str, max_results: int = 12, days: int = 1) -> list:
     """回傳最近重要信件 [{sender, subject}]，失敗則回空清單（不中斷晨報）。"""
     try:
         token = gmail_access_token(refresh_token)
@@ -116,7 +117,7 @@ def fetch_gmail(refresh_token: str, max_results: int = 12) -> list:
         listing = requests.get(
             "https://gmail.googleapis.com/gmail/v1/users/me/messages",
             headers=headers,
-            params={"q": GMAIL_QUERY, "maxResults": max_results},
+            params={"q": gmail_query(days), "maxResults": max_results},
             timeout=20,
         ).json()
         msgs = listing.get("messages", []) or []
@@ -140,15 +141,15 @@ def fetch_gmail(refresh_token: str, max_results: int = 12) -> list:
         return []
 
 
-def fetch_all_gmail() -> dict:
+def fetch_all_gmail(days: int = 1) -> dict:
     """讀取 wang / event 兩個信箱，回傳 {'wang': [...], 'event': [...]}。"""
     result = {"wang": [], "event": []}
     wang_token = os.environ.get("GMAIL_WANG_REFRESH_TOKEN")
     event_token = os.environ.get("GMAIL_EVENT_REFRESH_TOKEN")
     if wang_token:
-        result["wang"] = fetch_gmail(wang_token)
+        result["wang"] = fetch_gmail(wang_token, days=days)
     if event_token:
-        result["event"] = fetch_gmail(event_token)
+        result["event"] = fetch_gmail(event_token, days=days)
     return result
 
 

@@ -106,6 +106,12 @@ def detect_agent(message: str) -> str:
 AGENT_PROMPTS = {"sophie": SOPHIE_PROMPT, "lisa": LISA_PROMPT, "helen": HELEN_PROMPT}
 AGENT_NAMES = {"sophie": "Sophie", "lisa": "Lisa", "helen": "Helen"}
 
+# Helen 查信意圖關鍵字 → 即時讀 Gmail（wang/event 唯讀）
+HELEN_MAIL_KEYWORDS = [
+    "查信", "看信", "收信", "信箱", "有沒有信", "有什麼信", "有信嗎",
+    "帳單", "繳費", "mail", "gmail", "郵件", "電子郵件",
+]
+
 # ── Eva system prompt ────────────────────────────────────────────
 EVA_PROMPT = """你是 Eva，JIDIEN_Peggy LINE 官方帳號的 AI 客服助理，代表業務工程師 Peggy（王冠懿）在 LINE 上回覆客戶詢問。
 
@@ -559,6 +565,20 @@ def webhook():
             today_date = datetime.now(taipei).date()
             reply_text = fetch_and_format_today(today_date)
             reply_line(reply_token, f"[Sophie]\n{reply_text}")
+            continue
+
+        # Helen + 查信意圖 → 即時讀 Gmail（wang/event 唯讀，近 3 天）
+        if agent == "helen" and any(k in user_text.lower() for k in HELEN_MAIL_KEYWORDS):
+            try:
+                from helen_morning_brief import fetch_all_gmail, summarize_gmail
+                gmail = fetch_all_gmail(days=3)
+                summary = summarize_gmail(gmail)
+                if not summary:
+                    summary = "兩個信箱最近三天都沒有需要注意的信件 📭"
+                reply_line(reply_token, f"[Helen]\n{summary}")
+            except Exception as e:
+                print(f"[Helen] mail check error: {e}")
+                reply_line(reply_token, "[Helen]\n抱歉，查信時出了點狀況，等等再試一次 🙏")
             continue
 
         # 一般 AI 回應
