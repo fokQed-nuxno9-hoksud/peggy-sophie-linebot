@@ -12,6 +12,9 @@ Eva 知識庫更新腳本 v2
 """
 
 import os, glob, re
+import urllib.request
+import xml.etree.ElementTree as ET
+from urllib.parse import unquote
 from datetime import datetime
 
 try:
@@ -350,6 +353,77 @@ Pixel size = FOV ÷ 解析度（像素數）
 - 支援 Camera Link 和 CoaXPress 兩種介面
 """
 
+# ── 公司與據點資訊（curate，來源：jidien.com，公司層級不常變）──────────
+
+COMPANY_INFO = """
+## 六、公司與服務據點（JIDIEN 中和碁電）
+
+### 6-1 公司簡介
+- 公司全名：中和碁電股份有限公司（英文：JIDIEN）
+- 官方網站：https://www.jidien.com
+- 線上商城：https://www.jidienshop.com
+- 定位：台灣工業自動化與機器視覺整合代理商，以「依不同需求提供解決方案、服務為使命」為核心
+- 業務範圍：工業自動化控制、機器視覺系統整合、零組件代理與技術支援
+
+### 6-2 代理品牌（跨領域，不只機器視覺）
+- 機器視覺：Basler、Sony、Dalsa、Imperx、ISVI、Cognex、BitFlow（擷取卡）、CCS（光源）、深視 SSZN（3D）
+- 視覺軟體：MOZI（JIDIEN 自有視覺分析軟體）
+- PLC / 控制：Panasonic（PLC、配線材料、自動控制）、德國 BECKHOFF（工業電腦）
+- 馬達 / 運動控制：Delta 台達（伺服馬達）、Yaskawa 安川（馬達）
+- 電源：MEAN WELL 明緯
+- 其他：Schneider、Omron、機械手臂、雷射位移感測器
+
+### 6-3 服務據點（5 個辦公室）
+- 台北：新北市新莊區新北大道二段 312 號 9 樓｜TEL 02-85223237｜FAX 02-85223168｜jidien-taipei@jidien.com
+- 新竹：新竹縣竹北市環科路一段 23 號 8F-3｜TEL 03-6682788｜FAX 03-6682799｜jidien-hsinchu@jidien.com
+- 台中：台中市南區忠明南路 789 號 16 樓｜TEL 04-22615666｜FAX 04-22651051｜jidien-taichung@jidien.com
+- 台南：台南市仁德區保安路一段 62 號｜TEL 06-2668899｜FAX 06-2662288｜jidien-tainan@jidien.com
+- 高雄：高雄市苓雅區中正二路 30 號 12F-D｜TEL 07-2259666｜FAX 07-2234472｜jidien-kaohsiung@jidien.com
+
+### 6-4 線上商城 jidienshop.com
+- 24 小時線上下單
+- 設有常見問題（FAQ）、運送方式、付款方式、退換貨政策說明
+- 客戶可直接於商城瀏覽商品、查規格、下單；複雜選型或報價仍由 Peggy 協助
+"""
+
+# ── 線上商城商品分類（自動抓 sitemap，會隨上下架更新）──────────────────
+
+SHOP_SITEMAP_URL = "https://www.jidienshop.com/sitemap.xml"
+
+
+def fetch_shop_categories(timeout: int = 20) -> list[str]:
+    """解析商城 sitemap.xml，抓出所有 /categories/ 分類名稱（best-effort，失敗回空清單）。"""
+    try:
+        req = urllib.request.Request(SHOP_SITEMAP_URL, headers={"User-Agent": "Mozilla/5.0"})
+        data = urllib.request.urlopen(req, timeout=timeout).read()
+        root = ET.fromstring(data)
+        ns = {"sm": "http://www.sitemaps.org/schemas/sitemap/0.9"}
+        cats = []
+        for loc in root.iterfind(".//sm:loc", ns):
+            url = (loc.text or "").strip()
+            if "/categories/" in url:
+                slug = unquote(url.rstrip("/").split("/categories/")[-1])
+                if slug:
+                    cats.append(slug)
+        seen = set()
+        return [c for c in cats if not (c in seen or seen.add(c))]
+    except Exception as e:
+        print(f"  商城分類抓取失敗（略過）：{e}")
+        return []
+
+
+def count_shop_products(timeout: int = 20) -> int:
+    """順便統計商城商品數（/products/），失敗回 0。"""
+    try:
+        req = urllib.request.Request(SHOP_SITEMAP_URL, headers={"User-Agent": "Mozilla/5.0"})
+        data = urllib.request.urlopen(req, timeout=timeout).read()
+        root = ET.fromstring(data)
+        ns = {"sm": "http://www.sitemaps.org/schemas/sitemap/0.9"}
+        return sum(1 for loc in root.iterfind(".//sm:loc", ns) if "/products/" in (loc.text or ""))
+    except Exception:
+        return 0
+
+
 # ── 產生知識庫 ────────────────────────────────────────────────────
 
 def build_knowledge(cam_path: str | None, lens_path: str | None) -> str:
@@ -396,6 +470,27 @@ def build_knowledge(cam_path: str | None, lens_path: str | None) -> str:
 
     # 加入技術知識
     lines.append(TECH_KNOWLEDGE)
+
+    # 加入公司與據點資訊（curate）
+    lines.append(COMPANY_INFO)
+
+    # 加入線上商城商品分類（自動抓 sitemap）
+    print("正在抓取線上商城商品分類（sitemap）...")
+    cats = fetch_shop_categories()
+    prod_count = count_shop_products()
+    if cats:
+        print(f"  抓到 {len(cats)} 個商城分類、約 {prod_count} 件商品")
+        lines.append("")
+        lines.append("## 七、線上商城商品分類（jidienshop.com，隨上下架自動更新）")
+        lines.append(f"# 抓取日期：{today}，共 {len(cats)} 個分類、約 {prod_count} 件商品")
+        lines.append("")
+        lines.append("客戶可在 https://www.jidienshop.com 直接瀏覽下單。目前商城分類：")
+        for c in cats:
+            lines.append(f"  - {c}")
+        lines.append("")
+        lines.append("（若客戶問的型號不在上方牌價或分類中，請引導客戶至商城搜尋或由 Peggy 確認，不要直接斷言沒有。）")
+    else:
+        print("  商城分類未抓到，本次知識庫不含商城分類段落")
 
     return "\n".join(lines)
 

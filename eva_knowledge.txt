@@ -1,5 +1,5 @@
 # JIDIEN_Peggy 產品知識庫（Eva 專用）
-# 更新日期：2026-06-26
+# 更新日期：2026-06-29
 # 用途：Eva 回答客戶詢問，含品牌代理查詢、技術知識、選型建議
 
 ## 一、代理品牌與型號
@@ -2529,37 +2529,191 @@ Pixel size = FOV ÷ 解析度（像素數）
 - 美國品牌，高速影像擷取卡
 - 支援 Camera Link 和 CoaXPress 兩種介面
 
-## 六、FAQ 常見問題回覆
 
-### Q：你們有代理什麼產品？
+## 六、公司與服務據點（JIDIEN 中和碁電）
 
-JIDIEN 中和碁電，台灣 Machine vision 整合商，代理的產品很完整喔😊
+### 6-1 公司簡介
+- 公司全名：中和碁電股份有限公司（英文：JIDIEN）
+- 官方網站：https://www.jidien.com
+- 線上商城：https://www.jidienshop.com
+- 定位：台灣工業自動化與機器視覺整合代理商，以「依不同需求提供解決方案、服務為使命」為核心
+- 業務範圍：工業自動化控制、機器視覺系統整合、零組件代理與技術支援
 
-📷 工業相機
-・Basler（德國，市占第一品牌，品質保證）
-・大華、Sony、ALSON、ARTRAY、Imperx、OPT 等
-・分為 Area scan（面掃）、Line scan（線掃）、3D 相機
+### 6-2 代理品牌（跨領域，不只機器視覺）
+- 機器視覺：Basler、Sony、Dalsa、Imperx、ISVI、Cognex、BitFlow（擷取卡）、CCS（光源）、深視 SSZN（3D）
+- 視覺軟體：MOZI（JIDIEN 自有視覺分析軟體）
+- PLC / 控制：Panasonic（PLC、配線材料、自動控制）、德國 BECKHOFF（工業電腦）
+- 馬達 / 運動控制：Delta 台達（伺服馬達）、Yaskawa 安川（馬達）
+- 電源：MEAN WELL 明緯
+- 其他：Schneider、Omron、機械手臂、雷射位移感測器
 
-🔍 鏡頭
-・CCS lens（日本）、Computar、FUJINON、Schneider、ZEISS
-・Basler、TAMRON、TOKINA、KOWA 等多個品牌
-・包含 Telecentric（遠心鏡頭）和一般 CCTV 鏡頭
+### 6-3 服務據點（5 個辦公室）
+- 台北：新北市新莊區新北大道二段 312 號 9 樓｜TEL 02-85223237｜FAX 02-85223168｜jidien-taipei@jidien.com
+- 新竹：新竹縣竹北市環科路一段 23 號 8F-3｜TEL 03-6682788｜FAX 03-6682799｜jidien-hsinchu@jidien.com
+- 台中：台中市南區忠明南路 789 號 16 樓｜TEL 04-22615666｜FAX 04-22651051｜jidien-taichung@jidien.com
+- 台南：台南市仁德區保安路一段 62 號｜TEL 06-2668899｜FAX 06-2662288｜jidien-tainan@jidien.com
+- 高雄：高雄市苓雅區中正二路 30 號 12F-D｜TEL 07-2259666｜FAX 07-2234472｜jidien-kaohsiung@jidien.com
 
-💡 光源 & 光控器
-・CCS（日本高端品牌）、RSEE、ILUMINA（自有品牌）
-・丞基、登順 等國內品牌
-・環形光、同軸光、背光、條型光、穹頂光等各種類型
+### 6-4 線上商城 jidienshop.com
+- 24 小時線上下單
+- 設有常見問題（FAQ）、運送方式、付款方式、退換貨政策說明
+- 客戶可直接於商城瀏覽商品、查規格、下單；複雜選型或報價仍由 Peggy 協助
 
-🖥️ 影像擷取卡 & 軟體
-・Bitflow（Camera Link / CoaXPress）
-・MOZI 軟體（自創）
-・Neurocle（AI 分析，含 AI 深度學習）
-・Delta、Insnex、iRAYPLE
 
-📡 3D 感測器
-・深視 SR 系列（3D 雷射輪廓掃描儀，藍光）
+## 七、線上商城商品分類（jidienshop.com，隨上下架自動更新）
+# 抓取日期：2026-06-29，共 151 個分類、約 565 件商品
 
-⚙️ 其他
-・IPC 工業電腦、讀碼器（Barcode / QR Code）
+客戶可在 https://www.jidienshop.com 直接瀏覽下單。目前商城分類：
+  - 歐姆龍
+  - panasonic-industrial-camera
+  - panasonic-a系列控制器
+  - 人機-1
+  - 繼電器-1
+  - sony-線材
+  - basler-industrial-camera
+  - 昇銳
+  - imperx-industrial-camera
+  - sentech
+  - daheng-imaging-industrial-camera
+  - dalsa
+  - net
+  - cognex-工業相機
+  - 影像卡-2
+  - epix
+  - 丞基
+  - led光源-2
+  - led光源-3
+  - 鏡頭-1
+  - computar
+  - vs
+  - vs-鏡頭
+  - custom-made-products
+  - 燦銳
+  - 燦銳-鏡頭
+  - led光源-6
+  - panasonic-io板
+  - 松下-配線
+  - 松下-設計配線
+  - mean-well
+  - sensor
+  - glatima-series
+  - cosmo-art-series
+  - buzzers
+  - myutron
+  - lens-1
+  - lens-5
+  - lighting-fixtures
+  - accessories-5
+  - servomotor-2
+  - 線材
+  - outlet
+  - panasonic
+  - panasonic-pd50
+  - panasonic鏡頭
+  - 人機
+  - 開關
+  - ccs
+  - 伺服
+  - 線材-1
+  - 開關-1
+  - 繼電器座
+  - beckhoff
+  - 施耐德
+  - 施耐德-熱動電驛
+  - sony-industrial-camera
+  - hi-sharp-industrial-camera
+  - teli
+  - teli-industrial-camera
+  - daheng-imaging
+  - the-imaging-source-industrial-camera
+  - net-industrial-camera
+  - cognex
+  - euresys
+  - 影像卡-3
+  - 影像卡-4
+  - 新耀光
+  - tamron
+  - pentax-鏡頭
+  - 永結
+  - 永結-螢幕
+  - 映奧
+  - hayashi-led光源
+  - zyxel
+  - zyxel-配件
+  - 台達-1
+  - electric-relay
+  - push-button
+  - 台灣和泉
+  - control-panel
+  - watec
+  - industrial-camera
+  - tokina
+  - tuss
+  - lens-3
+  - fujinon
+  - nikon
+  - crib-wood-switch-panels
+  - beckhoff-1
+  - 工業相機
+  - 台達
+  - 松川
+  - 春日
+  - 京王
+  - basler
+  - sony
+  - 可程式控制器
+  - panasonic-繼電器
+  - ccsled光源
+  - 金屬接頭
+  - 可程式控制器-1
+  - motion
+  - 施耐德-開關
+  - 施耐德-燈類
+  - 松川-繼電器
+  - 接頭
+  - 押扣-1
+  - imperx
+  - sentech-industrial-camera
+  - the-imaging-source
+  - dalsa-industrial-camera
+  - fast
+  - 影像卡-5
+  - 影像卡-6
+  - riko
+  - led光源-4
+  - pentax
+  - computar-鏡頭
+  - 映奧-影像卡
+  - hayashi
+  - cei-線材
+  - panasonic-electric-relay-frame
+  - 電源供應器
+  - 繼電器座-1
+  - risna-series
+  - panel-pc
+  - embedded-pc
+  - electronic-counter
+  - deco-lite-series
+  - 端子台-1
+  - 配線
+  - lens
+  - filters
+  - accessories
+  - lens-2
+  - bitflow
+  - frame-grabber
+  - lens-4
+  - cables
+  - schneider
+  - cables-2
+  - 配件
+  - ioi
+  - industrial-camera-3
+  - isvi
+  - industrial-camera-4
+  - industrial-camera-5
+  - panasonic-extension-cord
+  - panasonic-iot
+  - 5f6c5280b973450023dfe99e
 
-有什麼具體的應用或產品需求，都可以告訴我！
+（若客戶問的型號不在上方牌價或分類中，請引導客戶至商城搜尋或由 Peggy 確認，不要直接斷言沒有。）
