@@ -79,6 +79,14 @@ services:
         sync: false
       - key: NOTION_TASKS_DB_ID
         sync: false
+      - key: GMAIL_CLIENT_ID
+        sync: false
+      - key: GMAIL_CLIENT_SECRET
+        sync: false
+      - key: GMAIL_WANG_REFRESH_TOKEN
+        sync: false
+      - key: GMAIL_EVENT_REFRESH_TOKEN
+        sync: false
       - key: ANTHROPIC_API_KEY
         sync: false
       - key: LINE_CHANNEL_ACCESS_TOKEN
