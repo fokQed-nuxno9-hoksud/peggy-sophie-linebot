@@ -224,7 +224,7 @@ def main():
     print("----------------")
 
     print("LINE push...", flush=True)
-    push_line(brief)
+    push_line(f"[Helen]\n{brief}")
     print("[Helen] 晨報推播完成", flush=True)
 
 
