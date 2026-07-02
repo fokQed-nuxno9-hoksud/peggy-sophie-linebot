@@ -1,0 +1,443 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Peggy LifeOS — Agent 團隊看板</title>
+<style>
+  :root {
+    --ground: #f5f7f5;
+    --surface: #ffffff;
+    --ink: #22282a;
+    --muted: #66706d;
+    --line: #e2e7e4;
+    --accent: #2e5e4e;
+    --accent-soft: #e8f0ec;
+    --ok: #2f7d4f;      --ok-bg: #e9f4ec;
+    --warn: #a9720e;    --warn-bg: #faf1dc;
+    --crit: #b5382f;    --crit-bg: #fbe9e7;
+    --fixed: #33608f;   --fixed-bg: #e8eff7;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--ground);
+    color: var(--ink);
+    font-family: "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", system-ui, sans-serif;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 1060px; margin: 0 auto; padding: 32px 20px 64px; }
+
+  header { display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px 16px; margin-bottom: 6px; }
+  h1 { font-size: 1.45rem; font-weight: 700; margin: 0; letter-spacing: .01em; }
+  .date-chip { font-size: .85rem; color: var(--muted); font-variant-numeric: tabular-nums; }
+  .updated { font-size: .78rem; color: var(--muted); margin: 0 0 24px; }
+
+  .summary { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 28px; }
+  .stat { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 14px 16px; }
+  .stat .num { font-size: 1.6rem; font-weight: 700; font-variant-numeric: tabular-nums; line-height: 1.2; }
+  .stat .lbl { font-size: .78rem; color: var(--muted); letter-spacing: .04em; }
+  .stat.ok .num { color: var(--ok); }
+  .stat.fixed .num { color: var(--fixed); }
+  .stat.warn .num { color: var(--warn); }
+  .stat.crit .num { color: var(--crit); }
+
+  h2 {
+    font-size: .82rem; font-weight: 600; color: var(--muted); letter-spacing: .08em;
+    margin: 36px 0 14px; padding-bottom: 8px; border-bottom: 1px solid var(--line);
+  }
+  h2 .sub { font-weight: 400; }
+
+  .agents { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .card {
+    background: var(--surface); border: 1px solid var(--line); border-radius: 12px;
+    padding: 18px 20px; display: flex; flex-direction: column; gap: 12px;
+  }
+  .card-head { display: flex; align-items: center; gap: 10px; }
+  .avatar {
+    width: 38px; height: 38px; border-radius: 50%;
+    background: var(--accent-soft); color: var(--accent);
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700; font-size: .95rem; flex-shrink: 0;
+  }
+  .card-head .who { flex: 1; min-width: 0; }
+  .card-head .name { font-weight: 700; font-size: 1.02rem; }
+  .card-head .role { font-size: .78rem; color: var(--muted); }
+  .pill {
+    font-size: .74rem; font-weight: 600; padding: 3px 10px; border-radius: 99px;
+    display: inline-flex; align-items: center; gap: 6px; white-space: nowrap;
+  }
+  .pill::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: currentColor; }
+  .pill.ok    { color: var(--ok);    background: var(--ok-bg); }
+  .pill.warn  { color: var(--warn);  background: var(--warn-bg); }
+  .pill.crit  { color: var(--crit);  background: var(--crit-bg); }
+  .pill.fixed { color: var(--fixed); background: var(--fixed-bg); }
+
+  .live-line {
+    display: flex; align-items: center; gap: 8px;
+    font-size: .8rem; padding: 7px 10px; border-radius: 8px;
+    background: var(--accent-soft); color: var(--accent);
+    font-variant-numeric: tabular-nums;
+  }
+  .live-line.bad { background: var(--crit-bg); color: var(--crit); }
+  .live-line .beacon { width: 8px; height: 8px; border-radius: 50%; background: currentColor; flex-shrink: 0; }
+
+  .tasks { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+  .tasks li {
+    display: flex; align-items: flex-start; gap: 9px;
+    font-size: .87rem; padding: 8px 10px; border-radius: 8px; background: var(--ground);
+  }
+  .dot { width: 8px; height: 8px; border-radius: 50%; margin-top: 8px; flex-shrink: 0; }
+  .dot.ok { background: var(--ok); }
+  .dot.warn { background: var(--warn); }
+  .dot.crit { background: var(--crit); }
+  .dot.fixed { background: var(--fixed); }
+  .tasks .t { flex: 1; }
+  .meta { font-size: .74rem; color: var(--muted); display: block; font-variant-numeric: tabular-nums; }
+
+  .event {
+    background: var(--surface); border: 1px solid var(--line); border-radius: 12px;
+    margin-bottom: 12px; overflow: hidden;
+  }
+  .event summary {
+    cursor: pointer; list-style: none; padding: 14px 18px;
+    display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
+  }
+  .event summary::-webkit-details-marker { display: none; }
+  .event summary::after {
+    content: "▾"; margin-left: auto; color: var(--muted); font-size: .8rem;
+    transition: transform .15s ease;
+  }
+  @media (prefers-reduced-motion: reduce) { .event summary::after { transition: none; } }
+  .event[open] summary::after { transform: rotate(180deg); }
+  .event summary:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; border-radius: 12px; }
+  .event .when { font-size: .78rem; color: var(--muted); font-variant-numeric: tabular-nums; }
+  .event .title { font-weight: 600; font-size: .92rem; }
+  .event .body {
+    padding: 12px 18px 16px; font-size: .87rem;
+    border-top: 1px dashed var(--line); margin: 0;
+  }
+  .event .body p { margin: 0 0 8px; }
+  .event .body p:last-child { margin-bottom: 0; }
+
+  .todo { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+  .todo li {
+    background: var(--surface); border: 1px solid var(--line); border-radius: 10px;
+    padding: 12px 16px; display: flex; gap: 12px; align-items: flex-start; font-size: .88rem;
+  }
+  .todo label { display: flex; gap: 12px; align-items: flex-start; cursor: pointer; flex: 1; }
+  .todo input[type="checkbox"] {
+    appearance: none; -webkit-appearance: none;
+    width: 20px; height: 20px; margin: 2px 0 0; flex-shrink: 0;
+    border: 2px solid var(--warn); border-radius: 6px; background: var(--surface);
+    cursor: pointer; display: inline-grid; place-content: center;
+  }
+  .todo input[type="checkbox"]::before {
+    content: "✓"; font-size: .8rem; font-weight: 700; color: #fff;
+    transform: scale(0); transition: transform .1s ease;
+  }
+  @media (prefers-reduced-motion: reduce) { .todo input[type="checkbox"]::before { transition: none; } }
+  .todo input[type="checkbox"]:checked { background: var(--ok); border-color: var(--ok); }
+  .todo input[type="checkbox"]:checked::before { transform: scale(1); }
+  .todo input[type="checkbox"]:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .todo li.done .t { text-decoration: line-through; color: var(--muted); }
+  .hint { font-size: .78rem; color: var(--muted); margin: 8px 0 0; }
+
+  .msg-box { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 18px 20px; }
+  .msg-box textarea {
+    width: 100%; min-height: 72px; resize: vertical;
+    border: 1px solid var(--line); border-radius: 8px; padding: 10px 12px;
+    font: inherit; font-size: .9rem; color: var(--ink); background: var(--ground);
+  }
+  .msg-box textarea:focus-visible { outline: 2px solid var(--accent); outline-offset: -1px; }
+  .msg-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 12px; }
+  .btn {
+    font: inherit; font-size: .85rem; font-weight: 600;
+    padding: 8px 16px; border-radius: 8px; cursor: pointer;
+    border: 1px solid transparent;
+  }
+  .btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .btn:disabled { opacity: .55; cursor: default; }
+  .btn-primary { background: var(--accent); color: #fff; }
+  .btn-primary:hover:not(:disabled) { background: #24493d; }
+  .msg-list { list-style: none; margin: 16px 0 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+  .msg-list li {
+    display: flex; gap: 10px; align-items: flex-start;
+    background: var(--ground); border-radius: 8px; padding: 10px 12px; font-size: .88rem;
+  }
+  .msg-list .txt { flex: 1; white-space: pre-wrap; word-break: break-word; }
+  .msg-list .when { font-size: .74rem; color: var(--muted); font-variant-numeric: tabular-nums; display: block; }
+  .msg-list .del {
+    background: none; border: none; cursor: pointer; color: var(--muted);
+    font-size: .9rem; padding: 2px 6px; border-radius: 6px; flex-shrink: 0;
+  }
+  .msg-list .del:hover { color: var(--crit); background: var(--crit-bg); }
+  .msg-list .del:focus-visible { outline: 2px solid var(--accent); }
+  .msg-empty { font-size: .82rem; color: var(--muted); margin: 14px 0 0; }
+
+  .toast {
+    position: fixed; left: 50%; bottom: 28px; transform: translateX(-50%) translateY(8px);
+    background: var(--ink); color: #fff; font-size: .85rem;
+    padding: 10px 18px; border-radius: 99px; opacity: 0; pointer-events: none;
+    transition: opacity .2s ease, transform .2s ease;
+    max-width: 90vw;
+  }
+  @media (prefers-reduced-motion: reduce) { .toast { transition: none; } }
+  .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+  .note {
+    margin-top: 40px; padding: 16px 18px; border-radius: 10px;
+    background: var(--accent-soft); color: var(--accent); font-size: .82rem;
+  }
+  .loading { color: var(--muted); font-size: .9rem; padding: 40px 0; text-align: center; }
+
+  @media (max-width: 720px) {
+    .summary { grid-template-columns: repeat(2, 1fr); }
+    .agents { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap" id="app">
+  <p class="loading">看板載入中…</p>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(function () {
+  var KEY = new URLSearchParams(location.search).get('key') || '';
+  var app = document.getElementById('app');
+  var toastEl = document.getElementById('toast');
+  var toastTimer;
+
+  function toast(msg) {
+    toastEl.textContent = msg;
+    toastEl.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function () { toastEl.classList.remove('show'); }, 2600);
+  }
+
+  function api(path, opts) {
+    opts = opts || {};
+    opts.headers = Object.assign({ 'X-Board-Key': KEY }, opts.headers || {});
+    if (opts.body) opts.headers['Content-Type'] = 'application/json';
+    return fetch(path, opts).then(function (r) {
+      if (!r.ok) throw new Error('HTTP ' + r.status);
+      return r.json();
+    });
+  }
+
+  function el(tag, cls, text) {
+    var e = document.createElement(tag);
+    if (cls) e.className = cls;
+    if (text != null) e.textContent = text;
+    return e;
+  }
+
+  var state = { todos_done: [], messages: [] };
+  var content = null;
+  var live = null;
+
+  function render() {
+    app.innerHTML = '';
+
+    var header = el('header');
+    header.appendChild(el('h1', '', 'Peggy LifeOS — Agent 團隊看板'));
+    header.appendChild(el('span', 'date-chip', content.date_label || ''));
+    app.appendChild(header);
+    var checkedNote = live && live.checked_at ? ' · 排程狀態 ' + live.checked_at + ' 即時查證' : '';
+    app.appendChild(el('p', 'updated', '最後更新：' + (content.updated || '') + checkedNote));
+
+    // ── summary ──
+    var pills = (content.agents || []).map(function (a) { return a.pill; });
+    var okCount = pills.filter(function (p) { return p === 'ok'; }).length;
+    var fixedCount = pills.filter(function (p) { return p === 'fixed'; }).length;
+    var critCount = pills.filter(function (p) { return p === 'crit' || p === 'warn'; }).length;
+    var todoRemain = (content.todos || []).filter(function (t) {
+      return state.todos_done.indexOf(t.id) === -1;
+    }).length;
+
+    var summary = el('div', 'summary');
+    [['ok', okCount, '運作正常'], ['fixed', fixedCount, '今日異常 → 已修復'],
+     ['warn', todoRemain, '待確認事項'], ['crit', critCount, '未處理異常']].forEach(function (s) {
+      var stat = el('div', 'stat ' + s[0]);
+      stat.appendChild(el('div', 'num', String(s[1])));
+      stat.appendChild(el('div', 'lbl', s[2]));
+      summary.appendChild(stat);
+    });
+    app.appendChild(summary);
+
+    // ── agent cards ──
+    app.appendChild(el('h2', '', 'Agent 團隊 — 今日狀態'));
+    var grid = el('div', 'agents');
+    (content.agents || []).forEach(function (a) {
+      var card = el('div', 'card');
+      var head = el('div', 'card-head');
+      head.appendChild(el('div', 'avatar', a.initials || a.name.slice(0, 2)));
+      var who = el('div', 'who');
+      who.appendChild(el('div', 'name', a.name));
+      who.appendChild(el('div', 'role', a.role || ''));
+      head.appendChild(who);
+      head.appendChild(el('span', 'pill ' + (a.pill || 'ok'), a.pill_label || ''));
+      card.appendChild(head);
+
+      var lv = live && live.crons && live.crons[a.id];
+      if (lv) {
+        var ok = lv.ok !== false;
+        var lline = el('div', 'live-line' + (ok ? '' : ' bad'));
+        lline.appendChild(el('span', 'beacon'));
+        var txt = lv.label + '：';
+        if (lv.status === 'running') txt += '服務運作中（' + lv.time + ' 查證）';
+        else if (lv.status === 'successful') txt += '最近一次執行成功（' + lv.time + '）';
+        else if (lv.status === 'unknown') txt += '暫時查不到執行紀錄';
+        else txt += '最近一次執行失敗（' + lv.time + '）';
+        lline.appendChild(el('span', '', txt));
+        card.appendChild(lline);
+      }
+
+      var ul = el('ul', 'tasks');
+      (a.items || []).forEach(function (it) {
+        var li = el('li');
+        li.appendChild(el('span', 'dot ' + (it.tone || 'ok')));
+        var t = el('span', 't', it.text);
+        if (it.meta) t.appendChild(el('span', 'meta', it.meta));
+        li.appendChild(t);
+        ul.appendChild(li);
+      });
+      card.appendChild(ul);
+      grid.appendChild(card);
+    });
+    app.appendChild(grid);
+
+    // ── events ──
+    if ((content.events || []).length) {
+      app.appendChild(el('h2', '', '今日事件紀錄'));
+      content.events.forEach(function (ev, i) {
+        var det = el('details', 'event');
+        if (i === 0) det.open = true;
+        var sum = el('summary');
+        sum.appendChild(el('span', 'pill ' + (ev.tone || 'fixed'), ev.label || ''));
+        sum.appendChild(el('span', 'title', ev.title));
+        sum.appendChild(el('span', 'when', ev.when || ''));
+        det.appendChild(sum);
+        var body = el('div', 'body');
+        (ev.paras || []).forEach(function (p) {
+          var para = el('p');
+          var strong = el('strong', '', p[0] + '：');
+          para.appendChild(strong);
+          para.appendChild(document.createTextNode(p[1]));
+          body.appendChild(para);
+        });
+        det.appendChild(body);
+        app.appendChild(det);
+      });
+    }
+
+    // ── todos ──
+    var h2t = el('h2', '', '待確認 / 追蹤中 ');
+    h2t.appendChild(el('span', 'sub', '— 確認完可直接打勾，跨裝置同步'));
+    app.appendChild(h2t);
+    var ul = el('ul', 'todo');
+    (content.todos || []).forEach(function (t) {
+      var li = el('li');
+      var done = state.todos_done.indexOf(t.id) !== -1;
+      if (done) li.classList.add('done');
+      var label = el('label');
+      var cb = document.createElement('input');
+      cb.type = 'checkbox';
+      cb.checked = done;
+      cb.setAttribute('aria-label', '標記完成：' + t.text);
+      cb.addEventListener('change', function () {
+        var want = cb.checked;
+        api('/board/api/todo', { method: 'POST', body: JSON.stringify({ id: t.id, done: want }) })
+          .then(function (res) {
+            state.todos_done = res.todos_done;
+            render();
+          })
+          .catch(function () { toast('儲存失敗，請再試一次'); cb.checked = !want; });
+      });
+      var txt = el('span', 't', t.text);
+      if (t.meta) txt.appendChild(el('span', 'meta', t.meta));
+      label.appendChild(cb);
+      label.appendChild(txt);
+      li.appendChild(label);
+      ul.appendChild(li);
+    });
+    app.appendChild(ul);
+
+    // ── messages ──
+    app.appendChild(el('h2', '', '留言給 Sophie'));
+    var box = el('div', 'msg-box');
+    var ta = document.createElement('textarea');
+    ta.placeholder = '想交辦或提醒 Sophie 的事…（例如：下週幫我追 XX 案的報價）';
+    box.appendChild(ta);
+    var actions = el('div', 'msg-actions');
+    var send = el('button', 'btn btn-primary', '送出 → Sophie 即時收到');
+    send.type = 'button';
+    send.addEventListener('click', function () {
+      var text = ta.value.trim();
+      if (!text) { toast('先輸入留言內容'); ta.focus(); return; }
+      send.disabled = true;
+      api('/board/api/message', { method: 'POST', body: JSON.stringify({ text: text }) })
+        .then(function (res) {
+          state.messages.push({ text: text, ts: res.ts });
+          ta.value = '';
+          send.disabled = false;
+          render();
+          toast(res.pushed ? '已送出，Sophie 已在 LINE 收到 ✓' : '已存下，但 LINE 通知失敗，稍後我會再確認');
+        })
+        .catch(function () { send.disabled = false; toast('送出失敗，請再試一次'); });
+    });
+    actions.appendChild(send);
+    box.appendChild(actions);
+
+    var list = el('ul', 'msg-list');
+    state.messages.forEach(function (m) {
+      var li = el('li');
+      var txt = el('span', 'txt', m.text);
+      txt.appendChild(el('span', 'when', m.ts + ' · 已送達 Sophie'));
+      var del = el('button', 'del', '✕');
+      del.type = 'button';
+      del.setAttribute('aria-label', '從清單移除這則留言');
+      del.addEventListener('click', function () {
+        api('/board/api/message/remove', { method: 'POST', body: JSON.stringify({ ts: m.ts, text: m.text }) })
+          .then(function () {
+            state.messages = state.messages.filter(function (x) { return !(x.ts === m.ts && x.text === m.text); });
+            render();
+          })
+          .catch(function () { toast('移除失敗，請再試一次'); });
+      });
+      li.appendChild(txt);
+      li.appendChild(del);
+      list.appendChild(li);
+    });
+    box.appendChild(list);
+    if (!state.messages.length) box.appendChild(el('p', 'msg-empty', '目前沒有留言。'));
+    app.appendChild(box);
+
+    app.appendChild(el('div', 'note',
+      '留言送出後會即時推播到 Peggy LifeOS LINE，Sophie 一定收得到。看板內容由 Sophie 每日更新；' +
+      '各排程的執行狀態是打開頁面時即時向 Render 查證的結果。'));
+  }
+
+  function load() {
+    api('/board/api/data')
+      .then(function (res) {
+        content = res.content || {};
+        state = res.state || { todos_done: [], messages: [] };
+        live = res.live || null;
+        render();
+      })
+      .catch(function (e) {
+        app.innerHTML = '';
+        app.appendChild(el('p', 'loading', '看板載入失敗（' + e.message + '）。請確認網址完整（含金鑰），或稍後再試 — 免費伺服器休眠時第一次打開要等約一分鐘。'));
+      });
+  }
+
+  load();
+})();
+</script>
+</body>
+</html>

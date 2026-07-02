@@ -1,0 +1,72 @@
+{
+ "date_label": "2026/07/02（週四）",
+ "updated": "2026/07/02 23:15 · 由 Sophie 整理",
+ "agents": [
+  {
+   "id": "sophie",
+   "initials": "So",
+   "name": "Sophie",
+   "role": "CEO · 工作助理 — 待辦、mail、報價、案件 PM、統籌全隊",
+   "pill": "ok",
+   "pill_label": "正常",
+   "items": [
+    {"tone": "ok", "text": "處理 Lisa 日報停發事件", "meta": "診斷 → 修復 → 補發，詳見下方事件紀錄"},
+    {"tone": "ok", "text": "CLAUDE.md 瘦身", "meta": "agent 說明書改為按需讀取，session 開場變輕"},
+    {"tone": "ok", "text": "建置這個互動看板", "meta": "掛在 Render，留言可即時送達 Sophie"}
+   ]
+  },
+  {
+   "id": "lisa",
+   "initials": "Li",
+   "name": "Lisa",
+   "role": "財經助理 — 美股台股觀察清單、每日財經日報",
+   "pill": "fixed",
+   "pill_label": "已修復",
+   "items": [
+    {"tone": "crit", "text": "07:00 財經日報 — 寄信失敗", "meta": "Gmail token 過期，數據有抓到"},
+    {"tone": "fixed", "text": "22:21 手動補寄成功", "meta": "已送達 Peggy 與 Logan；根因已治本，明早驗證"}
+   ]
+  },
+  {
+   "id": "helen",
+   "initials": "He",
+   "name": "Helen",
+   "role": "生活管家 — Notion 任務與購物清單、帳單／行程信件",
+   "pill": "ok",
+   "pill_label": "正常",
+   "items": [
+    {"tone": "ok", "text": "Gmail 唯讀 token 檢查通過", "meta": "兩把 token 均有效，並受惠於 OAuth 轉正式、不再 7 天過期"}
+   ]
+  },
+  {
+   "id": "eva",
+   "initials": "Ev",
+   "name": "Eva",
+   "role": "JIDIEN_Peggy LINE 官方帳號客服（Render 常駐）",
+   "pill": "ok",
+   "pill_label": "正常",
+   "items": [
+    {"tone": "ok", "text": "LINE 客服自動回覆運作中", "meta": "Claude Haiku 4.5 · 路由 /eva/webhook"},
+    {"tone": "ok", "text": "知識庫每週自動更新", "meta": "下次排程：7/6（週一）20:00，本機 launchd 重建 → push → 部署"}
+   ]
+  }
+ ],
+ "events": [
+  {
+   "tone": "fixed",
+   "label": "已修復",
+   "title": "Lisa 財經日報停發 — Gmail OAuth token 過期",
+   "when": "07:00 發生 · 當日修復",
+   "paras": [
+    ["發生什麼事", "早上 07:00 的排程有正常執行、市場數據都抓到了，但最後寄信時 Gmail 的通行證（refresh token）已失效，信寄不出去。"],
+    ["為什麼會發生", "Google 那邊的授權應用原本是「測試中」狀態，這種狀態的通行證每 7 天自動過期。"],
+    ["怎麼處理的", "把應用轉為「實際運作中」（以後通行證不再定期過期）、換發新通行證並同步更新本機與 Render 設定，最後手動補寄成功。Helen 讀信用的兩把通行證也一併受惠。"],
+    ["後續", "明天（7/3）早上 07:00 確認日報恢復自動寄出。"]
+   ]
+  }
+ ],
+ "todos": [
+  {"id": "lisa-0703", "text": "7/3（五）07:00 — 確認 Lisa 財經日報恢復自動寄出", "meta": "今日修復後的首次自動排程"},
+  {"id": "md-ondemand", "text": "觀察新 session 是否正確按需讀取 agent 說明書", "meta": "CLAUDE.md 瘦身後，點名 Lisa / Helen 時應先讀對應 .md 再回答"}
+ ]
+}

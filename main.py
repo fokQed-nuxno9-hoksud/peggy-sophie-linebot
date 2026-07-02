@@ -12,7 +12,10 @@ from datetime import datetime, date, timedelta
 from zoneinfo import ZoneInfo
 from flask import Flask, request, abort
 
+from board import board_bp
+
 app = Flask(__name__)
+app.register_blueprint(board_bp)
 
 LINE_CHANNEL_SECRET = os.environ["LINE_CHANNEL_SECRET"]
 LINE_CHANNEL_ACCESS_TOKEN = os.environ["LINE_CHANNEL_ACCESS_TOKEN"]

@@ -29,6 +29,10 @@ services:
         sync: false
       - key: EVA_LINE_CHANNEL_ACCESS_TOKEN
         sync: false
+      - key: BOARD_KEY
+        sync: false
+      - key: RENDER_API_KEY
+        sync: false
 
   - type: cron
     name: lisa-daily-report
